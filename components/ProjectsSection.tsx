@@ -48,101 +48,85 @@ export default function ProjectsSection() {
   return (
     <section id="projects" className="min-h-screen h-screen flex flex-col justify-center items-center border-b px-2 md:px-0 bg-black dark:bg-black">
       <div className="w-full max-w-2xl mx-auto flex flex-col gap-2">
-        <AnimatePresence initial={false}>
-          {projects.map((project, idx) => (
-            <motion.div key={project.title} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} transition={{ duration: 0.25, delay: idx * 0.05 }}>
-              <button
-                type="button"
-                onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-                onMouseEnter={() => setSelected(idx)}
-                onFocus={() => setSelected(idx)}
-                className={`group w-full flex items-center justify-between rounded-2xl px-4 py-2 md:py-3 transition-colors duration-200 cursor-pointer text-left ${
-                  selected === idx
-                    ? "bg-white/5 shadow-lg"
-                    : "hover:bg-white/2 focus:bg-white/5"
-                }`}
-                aria-expanded={openIdx === idx}
-                aria-controls={`project-details-${idx}`}
-              >
-                <div className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-3 w-full">
-                  <span className="font-semibold text-white text-sm md:text-base">
-                    {project.title}
-                  </span>
-                  <span className="text-neutral-400 text-xs md:text-sm truncate">
-                    {project.subtitle}
-                  </span>
-                </div>
-                <span className="ml-4 text-neutral-400 text-xs md:text-sm min-w-[3rem] text-right">
-                  {project.year}
+        {projects.map((project, idx) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.08 }}
+          >
+            <button
+              type="button"
+              onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
+              onMouseEnter={() => setSelected(idx)}
+              onFocus={() => setSelected(idx)}
+              className={`group w-full flex items-center justify-between rounded-2xl px-4 py-2 md:py-3 transition-colors duration-200 cursor-pointer text-left ${
+                selected === idx
+                  ? "bg-white/5 shadow-lg"
+                  : "hover:bg-white/2 focus:bg-white/5"
+              }`}
+              aria-expanded={openIdx === idx}
+              aria-controls={`project-details-${idx}`}
+            >
+              <div className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-3 w-full">
+                <span className="font-semibold text-white text-sm md:text-base">
+                  {project.title}
                 </span>
-              </button>
-              {/* Desktop: Skills bubbles below each project row */}
-              <div className="hidden md:flex flex-wrap gap-2 mt-2 px-4">
-                <AnimatePresence>
-                  {project.skills.map((skill, skillIdx) => (
-                    <motion.div
-                      key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.2, delay: 0.05 * skillIdx }}
-                      className="bg-white/10 text-white text-xs px-3 py-1 rounded-full font-medium shadow-sm border border-white/10"
-                    >
-                      {skill}
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
+                <span className="text-neutral-400 text-xs md:text-sm truncate">
+                  {project.subtitle}
+                </span>
               </div>
-              {/* Dropdown details */}
-              <AnimatePresence>
-                {openIdx === idx && (
-                  <motion.div
-                    id={`project-details-${idx}`}
-                    initial={{ opacity: 0, y: -8, height: 0 }}
-                    animate={{ opacity: 1, y: 0, height: 'auto' }}
-                    exit={{ opacity: 0, y: -8, height: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="overflow-hidden px-4 pb-4"
-                  >
-                    <div className="rounded-xl bg-white/5 p-4 mt-2 text-neutral-200 text-sm md:text-base shadow border border-white/10">
-                      <div className="mb-3 text-neutral-300 text-xs md:text-sm text-center md:text-left">
-                        {project.description}
-                      </div>
-                      <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
-                        {project.skills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="bg-white/10 text-white text-xs px-3 py-1 rounded-full font-medium shadow-sm border border-white/10"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex gap-3 justify-center md:justify-start">
-                        <a
-                          href={project.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-semibold shadow hover:from-blue-600 hover:to-blue-800 transition-colors"
-                        >
-                          Live Demo
-                        </a>
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-neutral-700 to-neutral-900 text-white text-xs font-semibold shadow hover:from-neutral-800 hover:to-black transition-colors"
-                        >
-                          GitHub
-                        </a>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+              <span className="ml-4 text-neutral-400 text-xs md:text-sm min-w-[3rem] text-right">
+                {project.year}
+              </span>
+            </button>
+            {openIdx === idx && (
+              <motion.div
+                id={`project-details-${idx}`}
+                initial={{ opacity: 0, y: -8, height: 0 }}
+                animate={{ opacity: 1, y: 0, height: 'auto' }}
+                exit={{ opacity: 0, y: -8, height: 0 }}
+                transition={{ duration: 0.25 }}
+                className="overflow-hidden px-4 pb-4"
+              >
+                <div className="rounded-xl bg-white/5 p-4 mt-2 text-neutral-200 text-sm md:text-base shadow border border-white/10">
+                  <div className="mb-3 text-neutral-300 text-xs md:text-sm text-center md:text-left">
+                    {project.description}
+                  </div>
+                  <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
+                    {project.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="bg-white/10 text-white text-xs px-3 py-1 rounded-full font-medium shadow-sm border border-white/10"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-3 justify-center md:justify-start">
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-semibold shadow hover:from-blue-600 hover:to-blue-800 transition-colors"
+                    >
+                      Live Demo
+                    </a>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-neutral-700 to-neutral-900 text-white text-xs font-semibold shadow hover:from-neutral-800 hover:to-black transition-colors"
+                    >
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </motion.div>
+        ))}
       </div>
       {/* Mobile description and skills below the selected project */}
       <div className="md:hidden mt-4 w-full max-w-2xl mx-auto">
