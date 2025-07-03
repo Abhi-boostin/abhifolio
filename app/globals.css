@@ -26,5 +26,5 @@ body {
 }
 
 html {
-  /* scroll-behavior: smooth;  Remove for Lenis compatibility */
+  scroll-behavior: smooth;
 }
