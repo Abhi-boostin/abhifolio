@@ -1,7 +1,5 @@
 import PortfolioFloatingDock from "../components/PortfolioFloatingDock";
 import HomeSection from "../components/HomeSection";
-import ProjectsSection from "../components/ProjectsSection";
-import SkillsSection from "../components/SkillsSection";
 
 export default function Home() {
   return (
@@ -13,10 +11,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Sections */}
+      {/* Home Section Only */}
       <HomeSection />
-      <ProjectsSection />
-      <SkillsSection />
     </main>
   );
 }
