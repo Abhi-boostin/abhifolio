@@ -128,51 +128,6 @@ export default function ProjectsSection() {
           </motion.div>
         ))}
       </div>
-      {/* Mobile description and skills below the selected project */}
-      <div className="md:hidden mt-4 w-full max-w-2xl mx-auto">
-        <AnimatePresence mode="wait">
-          {openIdx !== null && (
-            <motion.div
-              key={projects[openIdx].title + "-desc"}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.2 }}
-              className="rounded-xl bg-white/5 p-4 text-neutral-300 text-sm text-center mb-2"
-            >
-              {projects[openIdx].description}
-              <div className="flex flex-wrap gap-2 justify-center mt-3">
-                {projects[openIdx].skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="bg-white/10 text-white text-xs px-3 py-1 rounded-full font-medium shadow-sm border border-white/10"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-              <div className="flex gap-3 justify-center mt-4">
-                <a
-                  href={projects[openIdx].url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-semibold shadow hover:from-blue-600 hover:to-blue-800 transition-colors"
-                >
-                  Live Demo
-                </a>
-                <a
-                  href={projects[openIdx].github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-neutral-700 to-neutral-900 text-white text-xs font-semibold shadow hover:from-neutral-800 hover:to-black transition-colors"
-                >
-                  GitHub
-                </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
     </section>
   );
 } 

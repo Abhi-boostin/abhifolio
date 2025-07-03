@@ -28,3 +28,7 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}

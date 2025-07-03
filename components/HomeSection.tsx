@@ -94,8 +94,15 @@ export default function HomeSection() {
         </h2>
         <div className="w-full flex justify-center">
           <div
-            className="w-full max-w-[1100px] aspect-[2.3/1] h-[52vw] max-h-[350px] md:h-[28vw] md:max-h-[420px] rounded-2xl overflow-hidden bg-white shadow-xl border border-neutral-200 transition-all duration-300 flex items-center justify-center"
+            className="w-full max-w-[1100px] aspect-[1.5/1] h-[80vw] max-h-[500px] md:h-[38vw] md:max-h-[650px] rounded-2xl overflow-hidden bg-white shadow-xl border border-neutral-200 transition-all duration-300 flex items-center justify-center relative"
           >
+            {/* CTA overlay for interaction */}
+            <span
+              className="absolute z-10 left-1/2 top-6 -translate-x-1/2 bg-black/60 text-white text-xs md:text-base px-4 py-2 rounded-full shadow-lg animate-fadeOut pointer-events-none select-none"
+              style={{ animation: 'fadeOut 2.5s 2s forwards' }}
+            >
+              Drag or click to play!
+            </span>
             <Canvas onClick={click} shadows dpr={[1, 1.5]} gl={{ antialias: false }} camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }}>
               <color attach="background" args={["#141622"]} />
               <ambientLight intensity={0.4} />
