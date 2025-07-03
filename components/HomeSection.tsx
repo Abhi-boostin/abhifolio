@@ -123,11 +123,6 @@ export default function HomeSection() {
             </Canvas>
           </div>
         </div>
-        <div className="w-full flex justify-center items-center mt-8 md:mt-14">
-          <span className="text-xs md:text-base font-medium tracking-widest text-neutral-600 bg-white rounded-full px-6 py-2 shadow border border-neutral-200">
-            SCROLL TO EXPLORE
-          </span>
-        </div>
       </div>
     </section>
   );
