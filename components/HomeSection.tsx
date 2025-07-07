@@ -14,8 +14,8 @@ export default function HomeSection() {
         </div>
         {/* About Me with Animated Name */}
         <div className="w-full md:w-1/2 flex flex-col items-center text-center about-me-font order-2 md:order-1 items-start md:items-start justify-start h-full">
-          <div className="w-full flex flex-col items-center md:items-start mt-8 md:mt-16">
-            <div style={{ position: 'relative', height: '90px', width: '100%', maxWidth: 500 }} className="mb-2 flex justify-center md:justify-start">
+          <div className="w-full flex flex-col items-center md:items-start mt-12 md:mt-24">
+            <div style={{ position: 'relative', height: '90px', width: '100%', maxWidth: 500 }} className="mb-4 flex justify-center md:justify-start">
               <TextPressure
                 text="Abhimanyu Singh"
                 flex={true}
@@ -29,8 +29,11 @@ export default function HomeSection() {
                 minFontSize={36}
               />
             </div>
-            <h2 className="text-base md:text-lg font-normal text-neutral-300 mb-6 max-w-xl text-center md:text-left">
-              Developer, designer, and Web3 enthusiast. I enjoy turning ideas into interactive experiences and can help add a techy twist to your marketing projects. Let's build something cool together!
+            <div className="w-16 h-1 bg-neutral-700 rounded-full mb-8 mx-auto md:mx-0" />
+            <h2 className="text-base md:text-lg font-normal text-neutral-300 mb-10 max-w-xl text-center md:text-left leading-relaxed tracking-wide" style={{letterSpacing: '0.01em'}}>
+              <span className="block mb-4">Hey, I’m Abhimanyu — a creative developer blending code, design, and a dash of web3 magic.</span>
+              <span className="block mb-4">I craft playful, interactive experiences that make brands stand out. Whether you need a slick portfolio, a fun landing page, or a tech-powered campaign, I’ll help you turn ideas into digital reality.</span>
+              <span className="block mb-4">Always curious, always building. Let’s make something memorable together.</span>
             </h2>
           </div>
         </div>
