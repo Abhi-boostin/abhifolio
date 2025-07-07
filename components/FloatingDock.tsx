@@ -14,7 +14,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export const FloatingDock = ({
   items,
@@ -44,54 +44,72 @@ const FloatingDockMobile = ({
   className?: string;
   Link?: any;
 }) => {
-  const [open, setOpen] = useState(false);
+  let mouseX = useMotionValue(Infinity);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
+  // Touch support for floating effect and tooltip
+  const handleTouch = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches && e.touches.length > 0) {
+      const x = e.touches[0].clientX;
+      const y = e.touches[0].clientY;
+      mouseX.set(x);
+      // Find which icon is under the touch
+      for (let i = 0; i < iconRefs.current.length; i++) {
+        const ref = iconRefs.current[i];
+        if (ref) {
+          const rect = ref.getBoundingClientRect();
+          if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+            setHoveredIdx(i);
+            return;
+          }
+        }
+      }
+      setHoveredIdx(null);
+    }
+  };
+  const handleTouchEnd = () => {
+    mouseX.set(Infinity);
+    setHoveredIdx(null);
+  };
   return (
-    <div className={cn("fixed left-4 bottom-6 z-50 block md:hidden", className)}>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            layoutId="nav"
-            className="absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2 items-center"
+    <motion.div
+      onMouseMove={(e) => mouseX.set(e.pageX)}
+      onMouseLeave={() => mouseX.set(Infinity)}
+      onTouchStart={handleTouch}
+      onTouchMove={handleTouch}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchEnd}
+      className={cn(
+        "fixed bottom-3 left-1/2 -translate-x-1/2 z-50 flex md:hidden h-14 items-end gap-2 rounded-2xl bg-black px-2 pb-2 overflow-x-auto whitespace-nowrap scrollbar-hide",
+        className,
+      )}
+    >
+      {items.map((item, i) => (
+        item.isInternal && Link ? (
+          <Link
+            href={item.href}
+            key={item.title}
+            onClick={() => mouseX.set(Infinity)}
+            onTouchEnd={() => mouseX.set(Infinity)}
           >
-            {items.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: 10,
-                  transition: {
-                    delay: idx * 0.05,
-                  },
-                }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-                className="flex items-center justify-center"
-              >
-                {item.isInternal && Link ? (
-                  <Link href={item.href} key={item.title} className="flex h-10 w-10 items-center justify-center rounded-full bg-black">
-                    <div className="flex items-center justify-center h-6 w-6 text-white">{item.icon}</div>
-                  </Link>
-                ) : (
-                  <a href={item.href} key={item.title} className="flex h-10 w-10 items-center justify-center rounded-full bg-black">
-                    <div className="flex items-center justify-center h-6 w-6 text-white">{item.icon}</div>
-                  </a>
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-black"
-      >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-white" />
-      </button>
-    </div>
+            <div ref={el => { iconRefs.current[i] = el; }}>
+              <IconContainer mouseX={mouseX} {...item} hovered={hoveredIdx === i} />
+            </div>
+          </Link>
+        ) : (
+          <a
+            href={item.href}
+            key={item.title}
+            onClick={() => mouseX.set(Infinity)}
+            onTouchEnd={() => mouseX.set(Infinity)}
+          >
+            <div ref={el => { iconRefs.current[i] = el; }}>
+              <IconContainer mouseX={mouseX} {...item} hovered={hoveredIdx === i} />
+            </div>
+          </a>
+        )
+      ))}
+    </motion.div>
   );
 };
 
@@ -116,11 +134,21 @@ const FloatingDockDesktop = ({
     >
       {items.map((item) => (
         item.isInternal && Link ? (
-          <Link href={item.href} key={item.title}>
+          <Link
+            href={item.href}
+            key={item.title}
+            onClick={() => mouseX.set(Infinity)}
+            onTouchEnd={() => mouseX.set(Infinity)}
+          >
             <IconContainer mouseX={mouseX} {...item} />
           </Link>
         ) : (
-          <a href={item.href} key={item.title}>
+          <a
+            href={item.href}
+            key={item.title}
+            onClick={() => mouseX.set(Infinity)}
+            onTouchEnd={() => mouseX.set(Infinity)}
+          >
             <IconContainer mouseX={mouseX} {...item} />
           </a>
         )
@@ -134,11 +162,13 @@ function IconContainer({
   title,
   icon,
   href,
+  hovered: hoveredProp,
 }: {
   mouseX: MotionValue;
   title: string;
   icon: React.ReactNode;
   href: string;
+  hovered?: boolean;
 }) {
   let ref = useRef<HTMLDivElement>(null);
 
@@ -180,6 +210,7 @@ function IconContainer({
   });
 
   const [hovered, setHovered] = useState(false);
+  const actuallyHovered = hoveredProp !== undefined ? hoveredProp : hovered;
 
   return (
     <motion.div
@@ -190,7 +221,7 @@ function IconContainer({
       className="relative flex aspect-square items-center justify-center rounded-full bg-black"
     >
       <AnimatePresence>
-        {hovered && (
+        {actuallyHovered && (
           <motion.div
             initial={{ opacity: 0, y: 10, x: "-50%" }}
             animate={{ opacity: 1, y: 0, x: "-50%" }}
