@@ -1,7 +1,9 @@
 "use client"
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import ButterflyFollower from "./ButterflyFollower";
+import dynamic from 'next/dynamic';
+
+const ButterflyFollower = dynamic(() => import('./ButterflyFollower'), { ssr: false });
 
 const projects = [
   {

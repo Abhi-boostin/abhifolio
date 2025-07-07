@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
         {/* Floating Dock on all pages */}
         <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none">
@@ -37,7 +37,7 @@ export default function RootLayout({
         </div>
         {/* Page transition wrapper (client component) */}
         <PageTransitionWrapper>
-          <div className="min-h-screen bg-white dark:bg-neutral-950">
+          <div className="min-h-screen bg-black text-white">
             {children}
           </div>
         </PageTransitionWrapper>
