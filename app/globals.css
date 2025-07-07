@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Bitcount+Grid+Double:wght@100..900&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -31,4 +32,9 @@ html {
 
 @keyframes fadeOut {
   to { opacity: 0; visibility: hidden; }
+}
+
+/* About Me font utility */
+.about-me-font {
+  font-family: 'Saira Condensed', 'Anek Devanagari', 'Bitcount Grid Double', 'Oswald', 'Quicksand', sans-serif;
 }
