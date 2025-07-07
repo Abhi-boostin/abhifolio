@@ -64,50 +64,61 @@ export default function SkillsSection() {
     <section
       id="skills"
       className="w-full min-h-screen h-full flex flex-col items-center justify-start px-2 py-8 md:py-16 bg-black text-white overflow-y-auto relative"
-      style={{ fontFamily: 'Inter, ui-monospace, monospace' }}
+      style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}
     >
-      <div className="w-full max-w-2xl mx-auto relative z-10 bg-transparent backdrop-blur-md">
-        <h1 className="text-3xl md:text-4xl font-bold mb-8 tracking-widest font-mono flex items-center gap-2">
-          Skills
-        </h1>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap');`}</style>
+      <div className="w-full max-w-2xl mx-auto relative z-10 bg-transparent backdrop-blur-md" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
+        <div className="flex items-center mb-8 gap-4 md:gap-6">
+          <h1 className="text-3xl md:text-4xl tracking-widest" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
+            Skills
+          </h1>
+          <img
+            src="/icons and gifs/skill.gif"
+            alt="Sanrio Chococat GIF"
+            width={48}
+            height={48}
+            className="md:w-[64px] md:h-[64px] rounded-xl object-contain"
+            style={{ background: 'transparent', display: 'block' }}
+          />
+        </div>
         <Section title="Languages">
           {skills.languages.map((skill) => (
-            <Badge key={skill.name} className="font-mono font-semibold px-2 py-1 bg-[#222] text-white flex items-center gap-1">
+            <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
               <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
             </Badge>
           ))}
         </Section>
         <Section title="Frameworks">
           {skills.frameworks.map((skill) => (
-            <Badge key={skill.name} className="font-mono font-semibold px-2 py-1 bg-[#222] text-white flex items-center gap-1">
+            <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
               <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
             </Badge>
           ))}
         </Section>
         <Section title="Tools">
           {skills.tools.map((skill) => (
-            <Badge key={skill.name} className="font-mono font-semibold px-2 py-1 bg-[#222] text-white flex items-center gap-1">
+            <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
               <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
             </Badge>
           ))}
         </Section>
         <Section title="Platforms">
           {skills.platforms.map((skill) => (
-            <Badge key={skill.name} className="font-mono font-semibold px-2 py-1 bg-[#222] text-white flex items-center gap-1">
+            <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
               <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
             </Badge>
           ))}
         </Section>
         <Section title="Softwares">
           {skills.softwares.map((skill) => (
-            <Badge key={skill.name} className="font-mono font-semibold px-2 py-1 bg-[#222] text-white flex items-center gap-1">
+            <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
               <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
             </Badge>
           ))}
         </Section>
         <Section title="Dev Ops">
           {skills.devops.map((skill) => (
-            <Badge key={skill.name} className="font-mono font-semibold px-2 py-1 bg-[#222] text-white flex items-center gap-1">
+            <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
               <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
             </Badge>
           ))}

@@ -45,8 +45,15 @@ export default function ProjectsSection() {
   const [selected, setSelected] = useState(0);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
+  // Import Alumni Sans Pinstripe font
+  const projectFont = {
+    fontFamily: '"Saira Condensed", sans-serif',
+    fontWeight: 400
+  };
+
   return (
     <section id="projects" className="min-h-screen w-full flex flex-col items-center border-b px-2 md:px-0 bg-black dark:bg-black pt-12">
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Anek+Devanagari:wght@100..800&family=Bitcount+Grid+Double:wght@100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Quicksand:wght@300..700&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');`}</style>
       <div className="w-full max-w-2xl mx-auto flex flex-col gap-2">
         {projects.map((project, idx) => (
           <motion.div
@@ -71,10 +78,16 @@ export default function ProjectsSection() {
               aria-controls={`project-details-${idx}`}
             >
               <div className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-3 w-full">
-                <span className="font-semibold text-white text-sm md:text-base">
+                <span
+                  className="text-white block"
+                  style={{ fontFamily: '"Saira Condensed", sans-serif', fontWeight: 400, fontSize: '2rem', lineHeight: 1.1 }}
+                >
                   {project.title}
                 </span>
-                <span className="text-neutral-400 text-xs md:text-sm truncate">
+                <span
+                  className="text-neutral-400 block truncate"
+                  style={{ fontFamily: '"Saira Condensed", sans-serif', fontWeight: 400, fontSize: '1.25rem', lineHeight: 1.2 }}
+                >
                   {project.subtitle}
                 </span>
               </div>
@@ -93,7 +106,10 @@ export default function ProjectsSection() {
                   className="overflow-hidden px-4 pb-4"
                 >
                   <div className="rounded-xl bg-white/5 p-4 mt-2 text-neutral-200 text-sm md:text-base shadow border border-white/10">
-                    <div className="mb-3 text-neutral-300 text-xs md:text-sm text-center md:text-left">
+                    <div
+                      className="mb-3 text-neutral-300 text-center md:text-left"
+                      style={{ fontFamily: '"Saira Condensed", sans-serif', fontWeight: 400, fontSize: '1rem', lineHeight: 1.3 }}
+                    >
                       {project.description}
                     </div>
                     <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
