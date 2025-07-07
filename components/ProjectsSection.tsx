@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import dynamic from 'next/dynamic';
+import ProjectCard from "./ProjectCard";
 
 const ButterflyFollower = dynamic(() => import('./ButterflyFollower'), { ssr: false });
 
@@ -68,95 +69,15 @@ export default function ProjectsSection() {
       <ButterflyFollower />
       <div className="w-full max-w-2xl mx-auto flex flex-col gap-2">
         {projects.map((project, idx) => (
-          <motion.div
+          <ProjectCard
             key={project.title}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.08 }}
-            className={idx !== 0 ? "mt-4" : ""}
-          >
-            <button
-              type="button"
-              onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-              onMouseEnter={() => setSelected(idx)}
-              onFocus={() => setSelected(idx)}
-              className={`group w-full flex items-center justify-between rounded-2xl px-4 py-2 md:py-3 transition-colors duration-200 cursor-pointer text-left ${
-                selected === idx
-                  ? "bg-white/5 shadow-lg"
-                  : "hover:bg-white/2 focus:bg-white/5"
-              }`}
-              aria-expanded={openIdx === idx}
-              aria-controls={`project-details-${idx}`}
-            >
-              <div className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-3 w-full">
-                <span
-                  className="text-white block"
-                  style={{ fontFamily: '"Saira Condensed", sans-serif', fontWeight: 400, fontSize: '2rem', lineHeight: 1.1 }}
-                >
-                  {project.title}
-                </span>
-                <span
-                  className="text-neutral-400 block truncate"
-                  style={{ fontFamily: '"Saira Condensed", sans-serif', fontWeight: 400, fontSize: '1.25rem', lineHeight: 1.2 }}
-                >
-                  {project.subtitle}
-                </span>
-              </div>
-              <span className="ml-4 text-neutral-400 text-xs md:text-sm min-w-[3rem] text-right">
-                {project.year}
-              </span>
-            </button>
-            <AnimatePresence initial={false}>
-              {openIdx === idx && (
-                <motion.div
-                  id={`project-details-${idx}`}
-                  initial={{ opacity: 0, y: -16, height: 0 }}
-                  animate={{ opacity: 1, y: 0, height: 'auto' }}
-                  exit={{ opacity: 0, y: -16, height: 0 }}
-                  transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                  className="overflow-hidden px-4 pb-4"
-                >
-                  <div className="rounded-xl bg-white/5 p-4 mt-2 text-neutral-200 text-sm md:text-base shadow border border-white/10">
-                    <div
-                      className="mb-3 text-neutral-300 text-center md:text-left"
-                      style={{ fontFamily: '"Saira Condensed", sans-serif', fontWeight: 400, fontSize: '1rem', lineHeight: 1.3 }}
-                    >
-                      {project.description}
-                    </div>
-                    <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
-                      {project.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="bg-white/10 text-white text-xs px-3 py-1 rounded-full font-medium shadow-sm border border-white/10"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex gap-3 justify-center md:justify-start">
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-semibold shadow hover:from-blue-600 hover:to-blue-800 transition-colors"
-                      >
-                        Live Demo
-                      </a>
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-neutral-700 to-neutral-900 text-white text-xs font-semibold shadow hover:from-neutral-800 hover:to-black transition-colors"
-                      >
-                        GitHub
-                      </a>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
+            project={project}
+            idx={idx}
+            openIdx={openIdx}
+            setOpenIdx={setOpenIdx}
+            selected={selected}
+            setSelected={setSelected}
+          />
         ))}
       </div>
     </section>
