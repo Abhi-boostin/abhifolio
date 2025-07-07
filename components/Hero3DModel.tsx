@@ -84,7 +84,7 @@ export default function Hero3DModel({ accent, click }: { accent: number; click: 
   const connectors = useMemo(() => shuffle(accent), [accent]);
   return (
     <div
-      className="w-full max-w-[1100px] aspect-[1.5/1] h-[80vw] max-h-[500px] md:h-[38vw] md:max-h-[650px] rounded-2xl overflow-hidden bg-white shadow-xl border border-neutral-200 transition-all duration-300 flex items-center justify-center relative"
+      className="w-full max-w-[1100px] aspect-[1.5/1] h-[80vw] max-h-[500px] md:h-[38vw] md:max-h-[650px] rounded-2xl overflow-hidden bg-white shadow-xl transition-all duration-300 flex items-center justify-center relative"
     >
       {/* CTA overlay for interaction */}
       <span

@@ -13,9 +13,9 @@ export default function HomeSection() {
           <Hero3DModel accent={accent} click={click} />
         </div>
         {/* About Me with Animated Name */}
-        <div className="w-full md:w-1/2 flex flex-col items-center text-center about-me-font order-2 md:order-1 justify-center h-full">
-          <div className="w-full flex flex-col items-center mt-0 md:mt-8">
-            <div style={{ position: 'relative', height: '90px', width: '100%', maxWidth: 500 }} className="mb-2 flex justify-center">
+        <div className="w-full md:w-1/2 flex flex-col items-center text-center about-me-font order-2 md:order-1 items-start md:items-start justify-start h-full">
+          <div className="w-full flex flex-col items-center md:items-start mt-8 md:mt-16">
+            <div style={{ position: 'relative', height: '90px', width: '100%', maxWidth: 500 }} className="mb-2 flex justify-center md:justify-start">
               <TextPressure
                 text="Abhimanyu Singh"
                 flex={true}
@@ -29,7 +29,7 @@ export default function HomeSection() {
                 minFontSize={36}
               />
             </div>
-            <h2 className="text-base md:text-lg font-normal text-neutral-300 mb-6 max-w-xl">
+            <h2 className="text-base md:text-lg font-normal text-neutral-300 mb-6 max-w-xl text-center md:text-left">
               Developer, designer, and Web3 enthusiast. I enjoy turning ideas into interactive experiences and can help add a techy twist to your marketing projects. Let's build something cool together!
             </h2>
           </div>
