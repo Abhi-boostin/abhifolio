@@ -46,7 +46,7 @@ export default function ProjectsSection() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
-    <section id="projects" className="min-h-screen h-screen flex flex-col justify-center items-center border-b px-2 md:px-0 bg-black dark:bg-black">
+    <section id="projects" className="min-h-screen w-full flex flex-col items-center border-b px-2 md:px-0 bg-black dark:bg-black pt-12">
       <div className="w-full max-w-2xl mx-auto flex flex-col gap-2">
         {projects.map((project, idx) => (
           <motion.div
@@ -55,6 +55,7 @@ export default function ProjectsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: idx * 0.08 }}
+            className={idx !== 0 ? "mt-4" : ""}
           >
             <button
               type="button"
@@ -81,50 +82,52 @@ export default function ProjectsSection() {
                 {project.year}
               </span>
             </button>
-            {openIdx === idx && (
-              <motion.div
-                id={`project-details-${idx}`}
-                initial={{ opacity: 0, y: -8, height: 0 }}
-                animate={{ opacity: 1, y: 0, height: 'auto' }}
-                exit={{ opacity: 0, y: -8, height: 0 }}
-                transition={{ duration: 0.25 }}
-                className="overflow-hidden px-4 pb-4"
-              >
-                <div className="rounded-xl bg-white/5 p-4 mt-2 text-neutral-200 text-sm md:text-base shadow border border-white/10">
-                  <div className="mb-3 text-neutral-300 text-xs md:text-sm text-center md:text-left">
-                    {project.description}
-                  </div>
-                  <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
-                    {project.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="bg-white/10 text-white text-xs px-3 py-1 rounded-full font-medium shadow-sm border border-white/10"
+            <AnimatePresence initial={false}>
+              {openIdx === idx && (
+                <motion.div
+                  id={`project-details-${idx}`}
+                  initial={{ opacity: 0, y: -16, height: 0 }}
+                  animate={{ opacity: 1, y: 0, height: 'auto' }}
+                  exit={{ opacity: 0, y: -16, height: 0 }}
+                  transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                  className="overflow-hidden px-4 pb-4"
+                >
+                  <div className="rounded-xl bg-white/5 p-4 mt-2 text-neutral-200 text-sm md:text-base shadow border border-white/10">
+                    <div className="mb-3 text-neutral-300 text-xs md:text-sm text-center md:text-left">
+                      {project.description}
+                    </div>
+                    <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
+                      {project.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="bg-white/10 text-white text-xs px-3 py-1 rounded-full font-medium shadow-sm border border-white/10"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex gap-3 justify-center md:justify-start">
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-semibold shadow hover:from-blue-600 hover:to-blue-800 transition-colors"
                       >
-                        {skill}
-                      </span>
-                    ))}
+                        Live Demo
+                      </a>
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-neutral-700 to-neutral-900 text-white text-xs font-semibold shadow hover:from-neutral-800 hover:to-black transition-colors"
+                      >
+                        GitHub
+                      </a>
+                    </div>
                   </div>
-                  <div className="flex gap-3 justify-center md:justify-start">
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-semibold shadow hover:from-blue-600 hover:to-blue-800 transition-colors"
-                    >
-                      Live Demo
-                    </a>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-1.5 rounded-lg bg-gradient-to-r from-neutral-700 to-neutral-900 text-white text-xs font-semibold shadow hover:from-neutral-800 hover:to-black transition-colors"
-                    >
-                      GitHub
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            )}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         ))}
       </div>
