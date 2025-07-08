@@ -13,7 +13,7 @@ const projects = [
     description: "A modern portfolio website built with Next.js and Tailwind CSS. Features responsive design, dark mode, and animated UI elements.",
     year: 2024,
     url: "https://yourportfolio.com",
-    github: "https://github.com/yourusername/portfolio",
+    github: "https://github.com/Abhi-boostin/portfolio",
     skills: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
   },
   {
@@ -22,7 +22,7 @@ const projects = [
     description: "A cross-platform CLI tool for productivity, supporting custom scripts and plugins. Built with Node.js and TypeScript.",
     year: 2023,
     url: "https://github.com/yourusername/cli-tool",
-    github: "https://github.com/yourusername/cli-tool",
+    github: "https://github.com/Abhi-boostin/cli-tool",
     skills: ["Node.js", "TypeScript", "Commander.js"],
   },
   {
@@ -31,7 +31,7 @@ const projects = [
     description: "A set of accessible, minimal React UI components with Storybook documentation and full test coverage.",
     year: 2023,
     url: "https://github.com/yourusername/ui-library",
-    github: "https://github.com/yourusername/ui-library",
+    github: "https://github.com/Abhi-boostin/ui-library",
     skills: ["React", "TypeScript", "Storybook", "Jest"],
   },
   {
@@ -40,7 +40,7 @@ const projects = [
     description: "A markdown-based blog platform with custom themes, live preview, and easy deployment.",
     year: 2022,
     url: "https://yourblog.com",
-    github: "https://github.com/yourusername/blog-platform",
+    github: "https://github.com/Abhi-boostin/blog-platform",
     skills: ["Markdown", "Express.js", "MongoDB", "Styled Components"],
   },
 ];
