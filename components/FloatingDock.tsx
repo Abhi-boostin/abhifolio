@@ -21,16 +21,18 @@ export const FloatingDock = ({
   desktopClassName,
   mobileClassName,
   Link,
+  onItemClick,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string; isInternal?: boolean }[];
+  items: { title: string; icon: React.ReactNode; href: string; isInternal?: boolean; isMail?: boolean }[];
   desktopClassName?: string;
   mobileClassName?: string;
   Link?: any;
+  onItemClick?: (item: any) => boolean;
 }) => {
   return (
     <>
-      <FloatingDockDesktop items={items} className={desktopClassName} Link={Link} />
-      <FloatingDockMobile items={items} className={mobileClassName} Link={Link} />
+      <FloatingDockDesktop items={items} className={desktopClassName} Link={Link} onItemClick={onItemClick} />
+      <FloatingDockMobile items={items} className={mobileClassName} Link={Link} onItemClick={onItemClick} />
     </>
   );
 };
@@ -39,10 +41,12 @@ const FloatingDockMobile = ({
   items,
   className,
   Link,
+  onItemClick,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string; isInternal?: boolean }[];
+  items: { title: string; icon: React.ReactNode; href: string; isInternal?: boolean; isMail?: boolean }[];
   className?: string;
   Link?: any;
+  onItemClick?: (item: any) => boolean;
 }) => {
   let mouseX = useMotionValue(Infinity);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
@@ -89,7 +93,12 @@ const FloatingDockMobile = ({
           <Link
             href={item.href}
             key={item.title}
-            onClick={() => mouseX.set(Infinity)}
+            onClick={(e: React.MouseEvent) => {
+              mouseX.set(Infinity);
+              if (onItemClick && !onItemClick(item)) {
+                e.preventDefault();
+              }
+            }}
             onTouchEnd={() => mouseX.set(Infinity)}
           >
             <div ref={el => { iconRefs.current[i] = el; }}>
@@ -100,7 +109,12 @@ const FloatingDockMobile = ({
           <a
             href={item.href}
             key={item.title}
-            onClick={() => mouseX.set(Infinity)}
+            onClick={(e: React.MouseEvent) => {
+              mouseX.set(Infinity);
+              if (onItemClick && !onItemClick(item)) {
+                e.preventDefault();
+              }
+            }}
             onTouchEnd={() => mouseX.set(Infinity)}
           >
             <div ref={el => { iconRefs.current[i] = el; }}>
@@ -117,10 +131,12 @@ const FloatingDockDesktop = ({
   items,
   className,
   Link,
+  onItemClick,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string; isInternal?: boolean }[];
+  items: { title: string; icon: React.ReactNode; href: string; isInternal?: boolean; isMail?: boolean }[];
   className?: string;
   Link?: any;
+  onItemClick?: (item: any) => boolean;
 }) => {
   let mouseX = useMotionValue(Infinity);
   return (
@@ -137,7 +153,12 @@ const FloatingDockDesktop = ({
           <Link
             href={item.href}
             key={item.title}
-            onClick={() => mouseX.set(Infinity)}
+            onClick={(e: React.MouseEvent) => {
+              mouseX.set(Infinity);
+              if (onItemClick && !onItemClick(item)) {
+                e.preventDefault();
+              }
+            }}
             onTouchEnd={() => mouseX.set(Infinity)}
           >
             <IconContainer mouseX={mouseX} {...item} />
@@ -146,7 +167,12 @@ const FloatingDockDesktop = ({
           <a
             href={item.href}
             key={item.title}
-            onClick={() => mouseX.set(Infinity)}
+            onClick={(e: React.MouseEvent) => {
+              mouseX.set(Infinity);
+              if (onItemClick && !onItemClick(item)) {
+                e.preventDefault();
+              }
+            }}
             onTouchEnd={() => mouseX.set(Infinity)}
           >
             <IconContainer mouseX={mouseX} {...item} />
