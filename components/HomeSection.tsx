@@ -31,9 +31,12 @@ export default function HomeSection() {
             </div>
             <div className="w-16 h-1 bg-neutral-700 rounded-full mb-8 mx-auto md:mx-0" />
             <h2 className="text-base md:text-lg font-normal text-neutral-300 mb-10 max-w-xl text-center md:text-left leading-relaxed tracking-wide" style={{letterSpacing: '0.01em'}}>
-              <span className="block mb-4">Hey, I’m Abhimanyu — a creative developer blending code, design, and a dash of web3 magic.</span>
-              <span className="block mb-4">I craft playful, interactive experiences that make brands stand out. Whether you need a slick portfolio, a fun landing page, or a tech-powered campaign, I’ll help you turn ideas into digital reality.</span>
-              <span className="block mb-4">Always curious, always building. Let’s make something memorable together.</span>
+              Designer. Developer. Debugger of mysterious bugs and overthinker of simple ones.<br/>
+              Based in India, I navigate the digital jungle of Web2, Web3, and Machine Learning — occasionally convincing AI to be my co-pilot (or therapist).<br/>
+              I'm passionate about clean design, clean code, and occasionally cleaning my desk.<br/>
+              When I'm not building things, I'm probably breaking them to learn how they work.<br/>
+              <br/>
+              <span className="font-semibold text-white">Welcome to Abhimanyu as a Service — always compiling, occasionally functioning.</span>
             </h2>
           </div>
         </div>
