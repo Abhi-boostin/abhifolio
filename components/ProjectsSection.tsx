@@ -70,6 +70,14 @@ const projects = [
       "React Hooks"
     ],
   },
+  {
+    title: "Sideswitch",
+    subtitle: "Agency website for Indie startups",
+    description: "My own Agency website that provide multiple services currently working with Indie startups",
+    url: "https://sidedswitch2-0.vercel.app/",
+    github: "https://github.com/Abhi-boostin/sidedswitch2.0",
+    skills: ["Nextjs/React", "and a lot of things"],
+  },
 ];
 
 export default function ProjectsSection() {
