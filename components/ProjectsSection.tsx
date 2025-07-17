@@ -85,7 +85,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="min-h-screen w-full flex flex-col items-center border-b px-2 md:px-0 bg-black dark:bg-black pt-12 relative overflow-hidden"
+      className="min-h-screen w-full flex flex-col items-center border-b px-2 md:px-0 bg-black dark:bg-black pt-12 pb-32 relative overflow-hidden"
       style={{ cursor: 'url("/icons and gifs/Cosmos.cur"), auto' }}
     >
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Anek+Devanagari:wght@100..800&family=Bitcount+Grid+Double:wght@100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Quicksand:wght@300..700&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
