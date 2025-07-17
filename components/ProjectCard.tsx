@@ -5,7 +5,6 @@ interface Project {
   title: string;
   subtitle: string;
   description: string;
-  year: number;
   url: string;
   github: string;
   skills: string[];
@@ -111,9 +110,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx, openIdx, setOpe
             {project.subtitle}
           </span>
         </div>
-        <span className="ml-4 text-neutral-400 text-xs md:text-sm min-w-[3rem] text-right">
-          {project.year}
-        </span>
       </button>
       <AnimatePresence initial={false}>
         {openIdx === idx && <ProjectDetails project={project} />}
