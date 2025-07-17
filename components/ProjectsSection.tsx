@@ -27,7 +27,7 @@ const projects = [
     title: "AVDH",
     subtitle: "Universal video downloader API",
     description: "This project is a universal video downloader API built with Node.js and Express. It enables users to download videos from various platforms using a single endpoint, leveraging yt-dlp for broad compatibility. The API streams requested videos directly, simplifying access and download for any supported video URL.",
-    url: "N/A",
+    url: "https://allvideodownloaderhub.onrender.com/",
     github: "https://github.com/Abhi-boostin/AVDH",
     skills: ["Node.js", "Express.js", "REST API", "yt-dlp integration", "Video streaming", "File handling", "Error handling"],
   },
