@@ -8,6 +8,8 @@ const skills = {
     { name: "JavaScript", icon: "JS", iconColor: "text-yellow-300" },
     { name: "TypeScript", icon: "TS", iconColor: "text-blue-400" },
     { name: "C++", icon: "C++", iconColor: "text-blue-500" },
+    { name: "Python", icon: "🐍", iconColor: "text-green-400" },         // Added Python
+    { name: "SQL", icon: "🗃️", iconColor: "text-blue-400" },            // Added SQL
   ],
   frontendCore: [
     { name: "HTML5", icon: "HTML", iconColor: "text-orange-400" },
@@ -50,6 +52,7 @@ const skills = {
     { name: "GitHub Actions", icon: "⚡", iconColor: "text-green-400" },
     { name: "Netlify CI", icon: "N", iconColor: "text-green-500" },
     { name: "Vercel CLI", icon: "V", iconColor: "text-black" },
+    { name: "Supabase", icon: "🟩", iconColor: "text-green-500" },       // Supabase added previously
   ],
   backendTooling: [
     { name: "Postman", icon: "📮", iconColor: "text-orange-400" },
@@ -59,6 +62,7 @@ const skills = {
     { name: "Swagger", icon: "📚", iconColor: "text-green-500" },
     { name: "Cron", icon: "⏰", iconColor: "text-yellow-400" },
     { name: "dotenv", icon: "🔧", iconColor: "text-gray-400" },
+    { name: "Zod", icon: "Z", iconColor: "text-purple-400" },           // <-- Added Zod
   ],
   databases: [
     { name: "PostgreSQL", icon: "🐘", iconColor: "text-blue-400" },
@@ -77,6 +81,7 @@ const skills = {
     { name: "Webflow", icon: "W", iconColor: "text-blue-400" },
   ],
 };
+
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-8">
