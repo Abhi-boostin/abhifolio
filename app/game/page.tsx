@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
-import WhackAPixel from "@/components/WhackAPixel";
+import RecruiterPoll from "@/components/RecruiterPoll";
 
 export default function Game() {
-  return <WhackAPixel />;
-} 
+  return <RecruiterPoll />;
+}

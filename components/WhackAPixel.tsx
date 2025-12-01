@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const GRID_COLS = 4;
 const GRID_ROWS = 5;
@@ -74,93 +75,132 @@ export default function WhackAPixel() {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-black text-white px-2" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
+    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-black text-white px-4 relative overflow-hidden" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap');`}</style>
-      <div className="flex items-center justify-center gap-3 mb-6">
-        <h1
-          className="text-4xl mb-2"
-          style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace', fontWeight: 'normal' }}
-        >
-          Whack-a-Pixel
-        </h1>
-        <img src="/icons%20and%20gifs/game1.gif" alt="Cheering pixel cat" className="w-12 h-12" />
-      </div>
-      <div className="mb-2 text-lg" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>Score: {score} {running && <span className="ml-4 text-red-400">Misses: {missed}/3</span>}</div>
-      <div
-        className="grid"
-        style={{
-          gridTemplateColumns: `repeat(${GRID_COLS}, 48px)`,
-          gridTemplateRows: `repeat(${GRID_ROWS}, 48px)`,
-          gap: 8,
-          marginBottom: 24,
-        }}
+
+      {/* Background Grid Effect */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+
+      {/* Game Container */}
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="relative z-10 bg-neutral-900/50 backdrop-blur-sm p-8 rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center max-w-md w-full"
+        style={{ boxShadow: '0 0 40px rgba(236, 72, 153, 0.1)' }}
       >
-        {Array.from({ length: GRID_COLS * GRID_ROWS }).map((_, idx) => (
-          <button
-            key={idx}
-            className={`w-12 h-12 rounded-md flex items-center justify-center border border-neutral-700 bg-neutral-900 transition-all duration-75 ${
-              (running && idx === activeCell && !showGithub) ? "bg-pink-500 animate-pulse" : ""
-            }`}
-            style={{
-              boxShadow:
-                (running && idx === activeCell && !showGithub)
-                  ? "0 0 0 2px #fff, 0 0 8px 2px #ff90e8"
-                  : undefined,
-            }}
-            onClick={() => handleCellClick(idx)}
-            disabled={(!running && !showGithub) || (showGithub && idx !== activeCell)}
-            aria-label={
-              showGithub && idx === activeCell
-                ? "Go to GitHub"
-                : running && idx === activeCell
-                ? "Whack me!"
-                : undefined
-            }
+        {/* Header */}
+        <div className="flex items-center justify-center gap-4 mb-8">
+          <h1
+            className="text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-white to-neutral-400"
+            style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace', fontWeight: 'normal' }}
           >
-            {((showGithub && idx === activeCell) || (missed === 2 && running && idx === activeCell)) ? (
-              // Question mark icon
-              <span className="text-2xl font-bold text-white">?</span>
-            ) : running && idx === activeCell ? (
-              <span style={{ fontSize: 28, filter: 'drop-shadow(0 0 2px #fff)' }}>🟪</span>
-            ) : null}
-          </button>
-        ))}
-      </div>
-      {!running ? (
-        <button
-          className="px-6 py-2 rounded-lg bg-pink-600 text-white text-lg shadow hover:bg-pink-700 transition-colors"
-          style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}
-          onClick={startGame}
-        >
-          {score > 0 ? "Play Again" : "Start"}
-        </button>
-      ) : (
-        <button
-          className="px-4 py-1 rounded bg-neutral-800 text-neutral-300 text-sm mt-2"
-          style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}
-          onClick={stopGame}
-        >
-          Stop
-        </button>
-      )}
-      {!running && score > 0 && (
-        <div className="mt-4 text-xl text-green-400" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>Final Score: {score}</div>
-      )}
-      {!running && missed >= 3 && (
-        <div className="mt-2 text-red-400" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>text me, imma help you imrpove your skills</div>
-      )}
-      {!running && (
-        <div className="text-center">
-          <h2 className="text-2xl mb-4">Game Over!</h2>
-          <p className="mb-4">but you can still hire me.</p>
-          <button
-            onClick={startGame}
-            className="px-4 py-2 bg-white text-black rounded hover:bg-gray-200 transition-colors"
-          >
-            Play Again
-          </button>
+            Whack-a-Pixel
+          </h1>
+          <motion.img
+            src="/icons%20and%20gifs/game1.gif"
+            alt="Cheering pixel cat"
+            className="w-12 h-12"
+            animate={{ rotate: [0, 10, -10, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          />
         </div>
-      )}
+
+        {/* Score Board */}
+        <div className="flex items-center justify-between w-full mb-6 px-4 py-2 bg-black/40 rounded-lg border border-white/5">
+          <div className="text-lg text-neutral-300">Score: <span className="text-pink-500 font-bold">{score}</span></div>
+          {running && (
+            <div className="flex gap-1">
+              {[...Array(3)].map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-3 h-3 rounded-full transition-colors duration-300 ${i < missed ? 'bg-red-500' : 'bg-neutral-700'}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Game Grid */}
+        <div
+          className="grid gap-3 mb-8 p-4 bg-black/20 rounded-xl border border-white/5"
+          style={{
+            gridTemplateColumns: `repeat(${GRID_COLS}, 1fr)`,
+            gridTemplateRows: `repeat(${GRID_ROWS}, 1fr)`,
+          }}
+        >
+          {Array.from({ length: GRID_COLS * GRID_ROWS }).map((_, idx) => (
+            <motion.button
+              key={idx}
+              whileTap={{ scale: 0.9 }}
+              className={`w-12 h-12 md:w-14 md:h-14 rounded-lg flex items-center justify-center transition-all duration-200 relative overflow-hidden ${(running && idx === activeCell && !showGithub)
+                  ? "bg-pink-500 shadow-[0_0_15px_rgba(236,72,153,0.6)] border-2 border-white"
+                  : "bg-neutral-800/50 border border-white/5 hover:bg-neutral-800"
+                }`}
+              onClick={() => handleCellClick(idx)}
+              disabled={(!running && !showGithub) || (showGithub && idx !== activeCell)}
+            >
+              <AnimatePresence mode="wait">
+                {((showGithub && idx === activeCell) || (missed === 2 && running && idx === activeCell)) ? (
+                  <motion.span
+                    initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}
+                    className="text-2xl font-bold text-white"
+                  >
+                    ?
+                  </motion.span>
+                ) : running && idx === activeCell ? (
+                  <motion.span
+                    initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}
+                    style={{ fontSize: 28, filter: 'drop-shadow(0 0 2px #fff)' }}
+                  >
+                    🟪
+                  </motion.span>
+                ) : null}
+              </AnimatePresence>
+            </motion.button>
+          ))}
+        </div>
+
+        {/* Controls & Status */}
+        <div className="h-20 flex flex-col items-center justify-center w-full">
+          {!running ? (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 text-white text-lg font-bold shadow-lg shadow-pink-500/20 hover:shadow-pink-500/40 transition-all"
+              onClick={startGame}
+            >
+              {score > 0 ? "PLAY AGAIN" : "START GAME"}
+            </motion.button>
+          ) : (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-2 rounded-lg bg-neutral-800 text-neutral-400 text-sm hover:text-white hover:bg-neutral-700 transition-colors border border-white/5"
+              onClick={stopGame}
+            >
+              END GAME
+            </motion.button>
+          )}
+
+          <AnimatePresence>
+            {!running && score > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="absolute bottom-4 text-center"
+              >
+                <div className="text-2xl text-green-400 mb-1">Final Score: {score}</div>
+                {missed >= 3 && (
+                  <div className="text-sm text-neutral-400">
+                    Game Over! <br />
+                    <span className="text-white">but you can still hire me.</span>
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.div>
     </div>
   );
-} 
+}

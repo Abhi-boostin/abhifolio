@@ -49,6 +49,11 @@ export default function HomeSection() {
                         style={{ fontFamily: '"Quicksand", sans-serif' }}>
                         I am a <span className="text-white font-medium">Full Stack Engineer</span> specialized in <span className="text-white font-medium">Frontend Engineering</span> and <span className="text-white font-medium">Design</span>.
                     </p>
+
+                    <p className="hero-text text-neutral-400 max-w-md text-sm md:text-base leading-relaxed mt-4"
+                        style={{ fontFamily: '"Quicksand", sans-serif' }}>
+                        I worked solo,worked on a team, lead projects, or just a sideman as well. One dev for all your tasks with equal stats all around. Reach out to me on my mail and we can jump right into your project and ship it.
+                    </p>
                 </div>
 
                 {/* Right Side: 3D Model */}
