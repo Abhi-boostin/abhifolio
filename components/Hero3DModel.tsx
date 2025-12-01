@@ -1,8 +1,8 @@
 "use client";
 import * as THREE from "three";
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, MeshTransmissionMaterial, Environment, Lightformer } from "@react-three/drei";
+import { useGLTF, MeshTransmissionMaterial, Environment, Lightformer, PerformanceMonitor } from "@react-three/drei";
 import { CuboidCollider, BallCollider, Physics, RigidBody } from "@react-three/rapier";
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
 import { easing } from "maath";
@@ -82,19 +82,22 @@ useGLTF.preload("/model/c-transformed.glb");
 
 export default function Hero3DModel({ accent, click }: { accent: number; click: () => void }) {
   const connectors = useMemo(() => shuffle(accent), [accent]);
+  const [dpr, setDpr] = useState(1.5);
+  const [enabled, setEnabled] = useState(true);
+
   return (
     <div
-      className="w-full max-w-[1100px] aspect-[1.5/1] h-[80vw] max-h-[500px] md:h-[38vw] md:max-h-[650px] rounded-2xl overflow-hidden bg-white shadow-xl transition-all duration-300 flex items-center justify-center relative"
+      className="w-full h-full min-h-[400px] md:min-h-[600px] rounded-2xl overflow-hidden bg-transparent transition-all duration-300 flex items-center justify-center relative"
     >
-      {/* CTA overlay for interaction */}
-      <span
-        className="absolute z-10 left-1/2 top-6 -translate-x-1/2 bg-black/60 text-white text-xs md:text-base px-4 py-2 rounded-full shadow-lg animate-fadeOut pointer-events-none select-none"
-        style={{ animation: 'fadeOut 2.5s 2s forwards' }}
+      <Canvas
+        onClick={click}
+        shadows
+        dpr={[1, dpr]}
+        gl={{ antialias: false, powerPreference: "high-performance" }}
+        camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }}
       >
-        Drag or click to play!
-      </span>
-      <Canvas onClick={click} shadows dpr={[1, 1.5]} gl={{ antialias: false }} camera={{ position: [0, 0, 15], fov: 17.5, near: 1, far: 20 }}>
-        <color attach="background" args={["#141622"]} />
+        <PerformanceMonitor onIncline={() => setDpr(1.5)} onDecline={() => setDpr(1)} />
+        <color attach="background" args={["#000000"]} />
         <ambientLight intensity={0.4} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
         <Physics gravity={[0, 0, 0]}>
@@ -102,12 +105,19 @@ export default function Hero3DModel({ accent, click }: { accent: number; click: 
           {connectors.map((props, i) => <Connector key={i} {...props} />)}
           <Connector position={[10, 10, 5]}>
             <Model>
-              <MeshTransmissionMaterial clearcoat={1} thickness={0.1} anisotropicBlur={0.1} chromaticAberration={0.1} samples={8} resolution={512} />
+              <MeshTransmissionMaterial
+                clearcoat={1}
+                thickness={0.1}
+                anisotropicBlur={0.1}
+                chromaticAberration={0.1}
+                samples={4}
+                resolution={256}
+              />
             </Model>
           </Connector>
         </Physics>
-        <EffectComposer enableNormalPass={false} multisampling={8}>
-          <N8AO distanceFalloff={1} aoRadius={1} intensity={4} />
+        <EffectComposer enableNormalPass={false} multisampling={0}>
+          <N8AO distanceFalloff={1} aoRadius={1} intensity={4} quality="low" halfRes />
         </EffectComposer>
         <Environment resolution={256}>
           <group rotation={[-Math.PI / 3, 0, 1]}>
@@ -120,4 +130,4 @@ export default function Hero3DModel({ accent, click }: { accent: number; click: 
       </Canvas>
     </div>
   );
-} 
+}

@@ -1,46 +1,61 @@
 "use client";
 import Hero3DModel from "./Hero3DModel";
 import { useReducer } from "react";
-import TextPressure from "./reactbits/TextAnimations/TextPressure/TextPressure";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function HomeSection() {
-    const [accent, click] = useReducer((state) => ++state % 4, 0); // 4 accents in Hero3DModel
+    const [accent, click] = useReducer((state) => ++state % 4, 0);
+
+    useGSAP(() => {
+        gsap.from(".hero-text", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+    });
+
     return (
-        <section id="home" className="h-screen w-full flex items-center justify-center bg-black px-2 md:px-0">
-            <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 h-full">
-                {/* 3D Model */}
-                <div className="w-full md:w-1/2 flex justify-center items-center h-72 md:h-[500px] mt-8 md:mt-0">
-                    <Hero3DModel accent={accent} click={click} />
+        <section id="home" className="h-screen w-full flex items-center justify-center bg-black px-4 md:px-8 overflow-hidden">
+            <style>{`
+                @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap');
+            `}</style>
+
+            <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between h-full relative z-10">
+
+                {/* Left Side: Text Content */}
+                <div className="w-full md:w-1/2 flex flex-col justify-center items-start z-20 pt-20 md:pt-0">
+                    <h1 className="hero-text text-6xl md:text-8xl lg:text-9xl font-bold text-white leading-[0.9] tracking-tighter mb-2"
+                        style={{ fontFamily: '"Oswald", sans-serif' }}>
+                        ABHIMANYU<br />SINGH
+                    </h1>
+
+                    <div className="hero-text flex items-center gap-4 mb-8">
+                        <span className="text-sm md:text-lg text-neutral-500 tracking-[0.3em] font-light uppercase">
+                            Designer
+                        </span>
+                        <span className="text-neutral-700">X</span>
+                        <span className="text-sm md:text-lg text-neutral-500 tracking-[0.3em] font-light uppercase">
+                            Developer
+                        </span>
+                    </div>
+
+                    <p className="hero-text text-neutral-400 max-w-md text-sm md:text-base leading-relaxed"
+                        style={{ fontFamily: '"Quicksand", sans-serif' }}>
+                        I am a <span className="text-white font-medium">Full Stack Engineer</span> specialized in <span className="text-white font-medium">Frontend Engineering</span> and <span className="text-white font-medium">Design</span>.
+                    </p>
                 </div>
-                {/* About Me with Animated Name */}
-                <div className="w-full md:w-1/2 flex flex-col items-center text-center about-me-font order-2 md:order-1 items-start md:items-start justify-start h-full">
-                    <div className="w-full flex flex-col items-center md:items-start mt-12 md:mt-24">
-                        <div style={{ position: 'relative', height: '90px', width: '100%', maxWidth: 500 }} className="mb-4 flex justify-center md:justify-start">
-                            <TextPressure
-                                text="Abhimanyu Singh"
-                                flex={true}
-                                alpha={false}
-                                stroke={false}
-                                width={true}
-                                weight={true}
-                                italic={true}
-                                textColor="#ffffff"
-                                strokeColor="#ff0000"
-                                minFontSize={36}
-                            />
-                        </div>
-                        <div className="w-16 h-1 bg-neutral-700 rounded-full mb-8 mx-auto md:mx-0" />
-                        <h2 className="text-base md:text-lg font-normal text-neutral-300 mb-10 max-w-xl text-center md:text-left leading-relaxed tracking-wide" style={{ letterSpacing: '0.01em' }}>
-                            Designer. Developer. Debugger of mysterious bugs and overthinker of simple ones.<br />
-                            Based in India, I navigate the digital jungle of Web2, Web3, and Machine Learning — occasionally convincing AI to be my co-pilot (or therapist).<br />
-                            I'm passionate about clean design, clean code, and occasionally cleaning my desk.<br />
-                            When I'm not building things, I'm probably breaking them to learn how they work.<br />
-                            <br />
-                            <span className="font-semibold text-white">Welcome to Abhimanyu as a Service — always compiling, occasionally functioning.</span>
-                        </h2>
+
+                {/* Right Side: 3D Model */}
+                <div className="w-full md:w-1/2 h-[50vh] md:h-full flex items-center justify-center relative md:absolute md:right-0 md:top-0 md:bottom-0 pointer-events-auto">
+                    <div className="w-full h-full scale-110 md:scale-125 origin-center">
+                        <Hero3DModel accent={accent} click={click} />
                     </div>
                 </div>
+
             </div>
         </section>
     );
-} 
+}
