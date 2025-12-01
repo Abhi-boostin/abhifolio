@@ -3,6 +3,7 @@ import Hero3DModel from "./Hero3DModel";
 import { useReducer } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import GameQuoteLoader from "./GameQuoteLoader";
 
 export default function HomeSection() {
     const [accent, click] = useReducer((state) => ++state % 4, 0);
@@ -13,12 +14,14 @@ export default function HomeSection() {
             opacity: 0,
             duration: 1,
             stagger: 0.2,
-            ease: "power3.out"
+            ease: "power3.out",
+            delay: 2.5 // Delay to sync with loader exit
         });
     });
 
     return (
         <section id="home" className="h-screen w-full flex items-center justify-center bg-black px-4 md:px-8 overflow-hidden">
+            <GameQuoteLoader />
             <style>{`
                 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap');
             `}</style>

@@ -28,6 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
+        suppressHydrationWarning
       >
         {/* Floating Dock on all pages */}
         <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none">
