@@ -1,191 +1,118 @@
-'use client';
-import { Badge } from "./ui/badge";
-import React from "react";
+"use client";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const skills = {
   languages: [
-    { name: "Java", icon: "☕", iconColor: "text-orange-400" },
-    { name: "JavaScript", icon: "JS", iconColor: "text-yellow-300" },
-    { name: "TypeScript", icon: "TS", iconColor: "text-blue-400" },
-    { name: "C++", icon: "C++", iconColor: "text-blue-500" },
-    { name: "Python", icon: "🐍", iconColor: "text-green-400" },         // Added Python
-    { name: "SQL", icon: "🗃️", iconColor: "text-blue-400" },            // Added SQL
+    { name: "Java", icon: "☕", color: "text-orange-400" },
+    { name: "JavaScript", icon: "JS", color: "text-yellow-300" },
+    { name: "TypeScript", icon: "TS", color: "text-blue-400" },
+    { name: "C++", icon: "C++", color: "text-blue-500" },
+    { name: "Python", icon: "🐍", color: "text-green-400" },
+    { name: "SQL", icon: "🗃️", color: "text-blue-400" },
   ],
-  frontendCore: [
-    { name: "HTML5", icon: "HTML", iconColor: "text-orange-400" },
-    { name: "CSS", icon: "CSS", iconColor: "text-blue-300" },
-    { name: "JavaScript", icon: "JS", iconColor: "text-yellow-300" },
-    { name: "TypeScript", icon: "TS", iconColor: "text-blue-400" },
-  ],
-  frontendMain: [
-    { name: "React", icon: "⚛️", iconColor: "text-cyan-300" },
-    { name: "Vite", icon: "⚡", iconColor: "text-yellow-400" },
-    { name: "NextJs", icon: "N", iconColor: "text-white" },
-    { name: "Angular", icon: "A", iconColor: "text-red-400" },
-  ],
-  styling: [
-    { name: "TailwindCSS", icon: "TW", iconColor: "text-cyan-400" },
-    { name: "SCSS/SASS", icon: "S", iconColor: "text-pink-400" },
-    { name: "ShadcnUI", icon: "SU", iconColor: "text-white" },
-    { name: "Material UI", icon: "MU", iconColor: "text-blue-400" },
-    { name: "Framer Motion", icon: "FM", iconColor: "text-purple-400" },
-    { name: "GSAP", icon: "GS", iconColor: "text-green-400" },
-    { name: "Three.js", icon: "3D", iconColor: "text-blue-300" },
-    { name: "Lenis", icon: "L", iconColor: "text-white" },
-    { name: "Lottie", icon: "🎬", iconColor: "text-blue-400" },
-    { name: "AccernityUI", icon: "AU", iconColor: "text-purple-300" },
-    { name: "Reactbits", icon: "RB", iconColor: "text-green-300" },
-    { name: "many more", icon: "✨", iconColor: "text-yellow-400" },
+  frontend: [
+    { name: "React", icon: "⚛️", color: "text-cyan-300" },
+    { name: "Next.js", icon: "N", color: "text-white" },
+    { name: "Vite", icon: "⚡", color: "text-yellow-400" },
+    { name: "Tailwind CSS", icon: "TW", color: "text-cyan-400" },
+    { name: "Three.js", icon: "3D", color: "text-white" },
+    { name: "GSAP", icon: "GS", color: "text-green-400" },
+    { name: "Framer Motion", icon: "FM", color: "text-purple-400" },
+    { name: "HTML5", icon: "HTML", color: "text-orange-400" },
+    { name: "CSS3", icon: "CSS", color: "text-blue-300" },
   ],
   backend: [
-    { name: "Node.js", icon: "🟢", iconColor: "text-green-400" },
-    { name: "Express.js", icon: "E", iconColor: "text-gray-300" },
-    { name: "NestJS", icon: "N", iconColor: "text-red-500" },
-    { name: "Fastify", icon: "F", iconColor: "text-blue-400" },
-    { name: "Socket.IO", icon: "🔌", iconColor: "text-blue-300" },
-    { name: "Mongoose", icon: "M", iconColor: "text-green-500" },
-    { name: "Prisma", icon: "P", iconColor: "text-blue-600" },
-    { name: "Passport.js", icon: "🔐", iconColor: "text-blue-400" },
-    { name: "JWT", icon: "🎫", iconColor: "text-purple-400" },
-    { name: "REST APIs", icon: "🌐", iconColor: "text-blue-400" },
-    { name: "GraphQL", icon: "🔷", iconColor: "text-pink-400" },
-    { name: "GitHub Actions", icon: "⚡", iconColor: "text-green-400" },
-    { name: "Netlify CI", icon: "N", iconColor: "text-green-500" },
-    { name: "Vercel CLI", icon: "V", iconColor: "text-black" },
-    { name: "Supabase", icon: "🟩", iconColor: "text-green-500" },       // Supabase added previously
+    { name: "Node.js", icon: "🟢", color: "text-green-400" },
+    { name: "Express.js", icon: "EX", color: "text-gray-300" },
+    { name: "NestJS", icon: "N", color: "text-red-500" },
+    { name: "PostgreSQL", icon: "🐘", color: "text-blue-400" },
+    { name: "MongoDB", icon: "🍃", color: "text-green-500" },
+    { name: "Redis", icon: "🔴", color: "text-red-400" },
+    { name: "Supabase", icon: "⚡", color: "text-green-400" },
+    { name: "Firebase", icon: "🔥", color: "text-orange-400" },
+    { name: "GraphQL", icon: "🔷", color: "text-pink-400" },
   ],
-  backendTooling: [
-    { name: "Postman", icon: "📮", iconColor: "text-orange-400" },
-    { name: "Docker", icon: "🐳", iconColor: "text-blue-400" },
-    { name: "Nodemon", icon: "🔄", iconColor: "text-green-400" },
-    { name: "PM2", icon: "⚡", iconColor: "text-blue-500" },
-    { name: "Swagger", icon: "📚", iconColor: "text-green-500" },
-    { name: "Cron", icon: "⏰", iconColor: "text-yellow-400" },
-    { name: "dotenv", icon: "🔧", iconColor: "text-gray-400" },
-    { name: "Zod", icon: "Z", iconColor: "text-purple-400" },           // <-- Added Zod
-  ],
-  databases: [
-    { name: "PostgreSQL", icon: "🐘", iconColor: "text-blue-400" },
-    { name: "MySQL", icon: "🐬", iconColor: "text-blue-500" },
-    { name: "SQLite", icon: "💎", iconColor: "text-blue-300" },
-    { name: "SQL Server", icon: "🗄️", iconColor: "text-red-500" },
-    { name: "MongoDB", icon: "🍃", iconColor: "text-green-500" },
-    { name: "Firebase", icon: "🔥", iconColor: "text-orange-400" },
-    { name: "Redis", icon: "🔴", iconColor: "text-red-400" },
-  ],
-  otherTools: [
-    { name: "Git", icon: "📝", iconColor: "text-orange-500" },
-    { name: "GitHub", icon: "🐙", iconColor: "text-white" },
-    { name: "Figma", icon: "🎨", iconColor: "text-purple-400" },
-    { name: "Framer", icon: "F", iconColor: "text-blue-500" },
-    { name: "Webflow", icon: "W", iconColor: "text-blue-400" },
-  ],
+  tools: [
+    { name: "Git", icon: "📝", color: "text-orange-500" },
+    { name: "Docker", icon: "🐳", color: "text-blue-400" },
+    { name: "Figma", icon: "🎨", color: "text-purple-400" },
+    { name: "Postman", icon: "📮", color: "text-orange-400" },
+    { name: "Vercel", icon: "▲", color: "text-white" },
+    { name: "GitHub Actions", icon: "⚡", color: "text-blue-400" },
+  ]
 };
 
+const SkillCategory = ({ title, items, delay = 0 }: { title: string, items: typeof skills.languages, delay?: number }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
-const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="mb-8">
-    <div className="text-xs text-gray-400 mb-3 tracking-widest font-mono uppercase">{title}</div>
-    <div className="flex flex-wrap gap-2">{children}</div>
-  </div>
-);
+  return (
+    <div ref={ref} className="mb-16">
+      <motion.h3
+        initial={{ opacity: 0, x: -20 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.6, delay }}
+        className="text-2xl md:text-3xl text-white mb-8 font-light tracking-wider flex items-center gap-4"
+        style={{ fontFamily: '"Oswald", sans-serif' }}
+      >
+        <span className="w-8 h-[1px] bg-white/30"></span>
+        {title}
+      </motion.h3>
 
-const SubSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="mb-6">
-    <div className="text-sm text-gray-300 mb-2 font-medium">{title}</div>
-    <div className="flex flex-wrap gap-2">{children}</div>
-  </div>
-);
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {items.map((skill, idx) => (
+          <motion.div
+            key={skill.name}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, delay: delay + (idx * 0.05) }}
+            className="group flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+          >
+            <span className={`text-xl ${skill.color} filter drop-shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+              {skill.icon}
+            </span>
+            <span
+              className="text-neutral-300 group-hover:text-white transition-colors text-sm md:text-base font-medium"
+              style={{ fontFamily: '"Quicksand", sans-serif' }}
+            >
+              {skill.name}
+            </span>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function SkillsSection() {
   return (
-    <section
-      id="skills"
-      className="w-full min-h-screen h-full flex flex-col items-center justify-start px-2 py-8 md:py-16 bg-black text-white overflow-y-auto relative"
-      style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}
-    >
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap');`}</style>
-      <div className="w-full max-w-2xl mx-auto relative z-10 bg-transparent backdrop-blur-md" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
-        <div className="flex items-center mb-8 gap-4 md:gap-6">
-          <h1 className="text-3xl md:text-4xl tracking-widest" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
-            Skills
-          </h1>
-          <img
-            src="/icons and gifs/skill.gif"
-            alt="Sanrio Chococat GIF"
-            width={48}
-            height={48}
-            className="md:w-[64px] md:h-[64px] rounded-xl object-contain"
-            style={{ background: 'transparent', display: 'block' }}
-          />
+    <section id="skills" className="min-h-screen w-full bg-black text-white py-24 px-4 md:px-8 relative">
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap');
+      `}</style>
+
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-20">
+          <h2
+            className="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight"
+            style={{ fontFamily: '"Oswald", sans-serif' }}
+          >
+            SKILLS &<br />TECHNOLOGIES
+          </h2>
+          <p
+            className="text-neutral-400 max-w-xl text-lg leading-relaxed"
+            style={{ fontFamily: '"Quicksand", sans-serif' }}
+          >
+            A comprehensive toolkit that enables me to build scalable, performant, and beautiful web applications.
+          </p>
         </div>
-        
-        <Section title="Languages">
-          {skills.languages.map((skill) => (
-            <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
-              <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
-            </Badge>
-          ))}
-        </Section>
-        
-        <Section title="Frontend Development">
-          <SubSection title="Core Technologies">
-            {skills.frontendCore.map((skill) => (
-              <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
-                <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
-              </Badge>
-            ))}
-          </SubSection>
-          
-          <SubSection title="Main">
-            {skills.frontendMain.map((skill) => (
-              <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
-                <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
-              </Badge>
-            ))}
-          </SubSection>
-          
-          <SubSection title="Styling">
-            {skills.styling.map((skill) => (
-              <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
-                <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
-              </Badge>
-            ))}
-          </SubSection>
-        </Section>
-        
-        <Section title="Backend">
-          {skills.backend.map((skill) => (
-            <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
-              <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
-            </Badge>
-          ))}
-        </Section>
-        
-        <Section title="Backend Tooling">
-          {skills.backendTooling.map((skill) => (
-            <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
-              <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
-            </Badge>
-          ))}
-        </Section>
-        
-        <Section title="Databases">
-          {skills.databases.map((skill) => (
-            <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
-              <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
-            </Badge>
-          ))}
-        </Section>
-        
-        <Section title="Other Tools">
-          {skills.otherTools.map((skill) => (
-            <Badge key={skill.name} className="px-2 py-1 bg-[#222] text-white flex items-center gap-1" style={{ fontFamily: '"Bitcount Grid Double", Inter, ui-monospace, monospace' }}>
-              <span className={skill.iconColor}>{skill.icon}</span> {skill.name}
-            </Badge>
-          ))}
-        </Section>
+
+        <SkillCategory title="LANGUAGES" items={skills.languages} delay={0.1} />
+        <SkillCategory title="FRONTEND DEVELOPMENT" items={skills.frontend} delay={0.2} />
+        <SkillCategory title="BACKEND & DATABASES" items={skills.backend} delay={0.3} />
+        <SkillCategory title="TOOLS & DEVOPS" items={skills.tools} delay={0.4} />
       </div>
     </section>
   );
-} 
+}
