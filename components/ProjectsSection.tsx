@@ -10,71 +10,63 @@ const ButterflyFollower = dynamic(() => import('./ButterflyFollower'), { ssr: fa
 gsap.registerPlugin(ScrollTrigger);
 
 const projects: Project[] = [
+  // --- Personal Projects ---
+  {
+    title: "EasyHealth",
+    subtitle: "Medical document reader",
+    description: "EasyHealth is a web app that helps users understand medical documents, health reports, and provides guidance for further medical understanding.",
+    url: "https://eayhealthdemo.netlify.app/",
+    github: "https://github.com/Abhi-boostin/EasyHealth",
+    skills: ["JavaScript", "Medical Tech", "Web App"],
+    year: "2025",
+    category: "Health",
+    type: "Personal"
+  },
+  {
+    title: "autoshift",
+    subtitle: "n8n pipeline for business mails",
+    description: "autoshift streamlines lead generation and outreach by enabling you to quickly discover business emails. The workflow leverages a custom n8n pipeline.",
+    url: "https://autoshift.vercel.app/",
+    github: "https://github.com/Abhi-boostin/autoshift",
+    skills: ["n8n", "React", "Automation"],
+    year: "2025",
+    category: "Automation",
+    type: "Personal"
+  },
   {
     title: "Lesson AI",
     subtitle: "AI-powered lesson planning assistant",
-    description: "Lesson Planner AI is an innovative educational tool that leverages Google's Gemini AI to create detailed, professional lesson plans instantly. Perfect for teachers and educators, it features a beautiful dark/light mode interface, easy plan management, and the ability to export lessons to PDF.",
+    description: "Lesson Planner AI is an innovative educational tool that leverages Google's Gemini AI to create detailed, professional lesson plans instantly. Perfect for teachers and educators.",
     url: "https://lessonai.netlify.app/",
     github: "https://github.com/Abhi-boostin/lessonai",
-    skills: ["Next.js", "Gemini AI", "Tailwind CSS", "TypeScript"],
+    skills: ["Next.js", "Gemini AI", "Tailwind CSS"],
     year: "2024",
     category: "AI Tool",
-    type: "Personal"
-  },
-  {
-    title: "AptosPilot",
-    subtitle: "Aptos blockchain dApp",
-    description: "AptosPilot is a Next.js dApp for Aptos blockchain, featuring Google OAuth keyless accounts, Petra Wallet integration, live APT balance, AI chat assistant, and multi-network support.",
-    url: "N/A",
-    github: "https://github.com/Abhi-boostin/aptospilot",
-    skills: ["Next.js", "Aptos SDK", "Google OAuth", "Gemini AI"],
-    year: "2024",
-    category: "Blockchain",
-    type: "Personal"
-  },
-  {
-    title: "AVDH",
-    subtitle: "Universal video downloader API",
-    description: "Universal video downloader API built with Node.js and Express. It enables users to download videos from various platforms using a single endpoint, leveraging yt-dlp for broad compatibility.",
-    url: "https://allvideodownloaderhub.onrender.com/",
-    github: "https://github.com/Abhi-boostin/AVDH",
-    skills: ["Node.js", "Express", "yt-dlp", "REST API"],
-    year: "2024",
-    category: "API",
-    type: "Personal"
-  },
-  {
-    title: "Choolha Chawka",
-    subtitle: "Mess management web application",
-    description: "Mess management web application built with React and Django. Streamlines daily operations for mess administrators and users, allowing menu browsing, meal booking, and profile management.",
-    url: "https://www.choolhachowka.com/",
-    github: "https://github.com/himanshu-sharmav/Choolha_Chawka",
-    skills: ["React", "Django", "PostgreSQL", "AWS"],
-    year: "2024",
-    category: "Web App",
-    type: "Personal"
-  },
-  {
-    title: "StashBoard",
-    subtitle: "Secure inventory management",
-    description: "Secure inventory management backend with user authentication and OTP-based email verification. Built using Node.js, Express, MongoDB, and Mongoose.",
-    url: "N/A",
-    github: "https://github.com/Abhi-boostin/stashboard",
-    skills: ["Node.js", "MongoDB", "Express", "JWT"],
-    year: "2024",
-    category: "Backend",
     type: "Personal"
   },
   {
     title: "Mained",
     subtitle: "Music Player with no ads",
     description: "A modern music discovery platform that combines LastFM's music data with YouTube playback functionality. Features a visually striking grid layout and real-time track search.",
-    url: "https://abhi-boostin.github.io/Mained-web-app/",
+    url: "https://mainedmusicplayer.netlify.app/",
     github: "https://github.com/Abhi-boostin/Mained-web-app",
-    skills: ["Next.js", "Mantine UI", "YouTube API", "LastFM API"],
+    skills: ["Next.js", "Mantine UI", "YouTube API"],
     year: "2024",
     category: "Music",
     type: "Personal"
+  },
+
+  // --- Client Projects ---
+  {
+    title: "Choolha Chowka",
+    subtitle: "Mess management web application",
+    description: "Mess management web application built with React and Django. Streamlines daily operations for mess administrators and users.",
+    url: "https://www.choolhachowka.com/",
+    github: "https://github.com/himanshu-sharmav/Choolha_Chawka",
+    skills: ["React", "Django", "PostgreSQL"],
+    year: "2024",
+    category: "Web App",
+    type: "Client"
   },
   {
     title: "Sideswitch",
@@ -88,102 +80,25 @@ const projects: Project[] = [
     type: "Client"
   },
   {
-    title: "HEALTHUP",
-    subtitle: "Angular fitness tracking app",
-    description: "A fitness tracking application built with Angular 19 that helps users monitor their workout activities. Features include multi-user support and progress visualization.",
-    url: "https://abhi-boostin.github.io/HEALTHUP/",
-    github: "https://github.com/Abhi-boostin/HEALTHUP",
-    skills: ["Angular 19", "Material UI", "Chart.js"],
-    year: "2025",
-    category: "Fitness",
-    type: "Personal"
-  },
-  {
-    title: "ecommerce-app",
-    subtitle: "Trial Next.js + Vercel AI frontend",
-    description: "A trial Next.js application created using Vercel's AI (v0) to explore AI-powered frontend design and rapid prototyping capabilities.",
-    url: "http://67bc13020592966dd9e7f7a2--v0ecommercesite.netlify.app",
-    github: "https://github.com/Abhi-boostin/ecommerce-app",
-    skills: ["Next.js", "Vercel AI", "TypeScript"],
-    year: "2025",
-    category: "Ecommerce",
-    type: "Personal"
-  },
-  {
-    title: "ADHD",
-    subtitle: "Random Unsplash Wallpaper",
-    description: "A Python-based script that changes your desktop wallpaper to a random HD image from Unsplash. Automate fresh looks for your workspace.",
-    url: "N/A",
-    github: "https://github.com/Abhi-boostin/ADHD",
-    skills: ["Python", "Unsplash API", "Automation"],
-    year: "2025",
-    category: "Script",
-    type: "Personal"
-  },
-  {
-    title: "course-app",
-    subtitle: "Modern course platform",
-    description: "A modern course platform using Next.js 15 and TypeScript, featuring intuitive course browsing and enrollment, responsive design, and real-time updates.",
-    url: "https://coursemanagerui.netlify.app/",
-    github: "https://github.com/Abhi-boostin/course-app",
-    skills: ["Next.js 15", "TypeScript", "Real-time"],
-    year: "2025",
-    category: "Education",
-    type: "Personal"
-  },
-  {
-    title: "EasyHealth",
-    subtitle: "Medical document reader",
-    description: "EasyHealth is a web app that helps users understand medical documents, health reports, and provides guidance for further medical understanding.",
-    url: "https://eayhealthdemo.netlify.app/",
-    github: "https://github.com/Abhi-boostin/EasyHealth",
-    skills: ["JavaScript", "Medical Tech", "Web App"],
-    year: "2025",
-    category: "Health",
-    type: "Personal"
-  },
-  {
-    title: "Dikhato",
-    subtitle: "Face matching automation",
-    description: "A Python script for photographers to perform face recognition and distribute different sets of photos based on recognized faces.",
-    url: "N/A",
-    github: "https://github.com/Abhi-boostin/Dikhato",
-    skills: ["Python", "Face Recognition", "Automation"],
-    year: "2025",
-    category: "Automation",
-    type: "Personal"
-  },
-  {
-    title: "IntelCorp",
-    subtitle: "Phone number OSINT tool",
-    description: "A JS tool to find details associated with a phone number including name, location, and last seen, useful for OSINT and information gathering.",
-    url: "https://intelcorp.netlify.app/",
-    github: "https://github.com/Abhi-boostin/IntelCorp",
-    skills: ["JavaScript", "OSINT", "Tools"],
-    year: "2025",
-    category: "OSINT",
-    type: "Personal"
-  },
-  {
     title: "OneBrand",
     subtitle: "One stop ecommerce website",
     description: "A website for your store with complete backend, frontend, database, admin side, and customer side. Full ecommerce solution.",
     url: "https://onebrandoutfit.netlify.app/",
     github: "https://github.com/Abhi-boostin/OneBrand",
-    skills: ["React", "Node.js", "MongoDB", "Figma"],
+    skills: ["React", "Node.js", "MongoDB"],
     year: "2025",
     category: "Ecommerce",
     type: "Client"
   },
   {
-    title: "autoshift",
-    subtitle: "n8n pipeline for business mails",
-    description: "autoshift streamlines lead generation and outreach by enabling you to quickly discover business emails. The workflow leverages a custom n8n pipeline.",
-    url: "https://autoshift.vercel.app/",
-    github: "https://github.com/Abhi-boostin/autoshift",
-    skills: ["n8n", "React", "Automation"],
-    year: "2025",
-    category: "Automation",
+    title: "Light Emotion",
+    subtitle: "Creative lighting showcase",
+    description: "A visually immersive website showcasing creative lighting solutions and emotional design concepts.",
+    url: "https://lightemotion.netlify.app/",
+    github: "N/A",
+    skills: ["Web Design", "Frontend", "Creative"],
+    year: "2024",
+    category: "Creative",
     type: "Client"
   }
 ];
