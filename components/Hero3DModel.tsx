@@ -68,10 +68,10 @@ function Model({ children, color = "white", roughness = 0, ...props }: ModelProp
   });
   return (
     <mesh ref={ref} castShadow receiveShadow scale={7} geometry={nodes.connector.geometry}>
-      <meshStandardMaterial 
-        metalness={0.2} 
-        roughness={roughness} 
-        map={materials.base.map} 
+      <meshStandardMaterial
+        metalness={0.2}
+        roughness={roughness}
+        map={materials.base.map}
       />
       {children}
     </mesh>

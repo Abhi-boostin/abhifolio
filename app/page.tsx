@@ -9,7 +9,7 @@ export default function Home() {
         <div className="pointer-events-auto">
           <PortfolioFloatingDock />
         </div>
-    </div>
+      </div>
 
       {/* Home Section Only */}
       <HomeSection />
