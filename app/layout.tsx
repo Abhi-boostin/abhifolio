@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import PortfolioFloatingDock from "../components/PortfolioFloatingDock";
+import DynamicIslandNav from "../components/DynamicIslandNav";
 import PageTransitionWrapper from "../components/PageTransitionWrapper";
 
 const geistSans = Geist({
@@ -30,12 +30,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
         suppressHydrationWarning
       >
-        {/* Floating Dock on all pages */}
-        <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none">
-          <div className="pointer-events-auto">
-            <PortfolioFloatingDock />
-          </div>
-        </div>
+        {/* Dynamic Island Navigation */}
+        <DynamicIslandNav />
+
         {/* Page transition wrapper (client component) */}
         <PageTransitionWrapper>
           <div className="min-h-screen bg-black text-white">
