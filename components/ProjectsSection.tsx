@@ -10,7 +10,86 @@ const ButterflyFollower = dynamic(() => import('./ButterflyFollower'), { ssr: fa
 gsap.registerPlugin(ScrollTrigger);
 
 const projects: Project[] = [
+  // --- Client Projects ---
+  {
+    title: "Choolha Chowka",
+    subtitle: "Mess management web application",
+    description: "Mess management web application built with React and Django. Streamlines daily operations for mess administrators and users. with 10+ modules from purachasing subscription upload feedback ask for leaves to disable daily expenditure and much more.",
+    url: "https://www.choolhachowka.com/",
+    github: "Private",
+    skills: ["React", "Django", "PostgreSQL"],
+    year: "2024",
+    category: "Web App",
+    type: "Client"
+  },
+  {
+    title: "Berry Pos",
+    subtitle: "Point Of Sale System",
+    description: "this is a point of system made for cafe and restaurernt chain handllising customer and waiter management to on table view and order and vallet and zomotato swiggy integration ( Ongoing )",
+    url: "https://berrysoftwaresolutions.netlify.app/login2",
+    github: "Private",
+    skills: ["React", "Node.js", "MongoDB"],
+    year: "2025",
+    category: "SaaS",
+    type: "Client"
+  },
+  {
+    title: "Light Emotion",
+    subtitle: "Creative lighting showcase",
+    description: "A visually immersive website showcasing creative lighting solutions and emotional design concepts. portfolio website for a b2b brand that is in the light creation buisness",
+    url: "https://lightemotion.netlify.app/",
+    github: "Private",
+    skills: ["Web Design", "Frontend", "Creative"],
+    year: "2024",
+    category: "Creative",
+    type: "Client"
+  },
+  {
+    title: "Archideus",
+    subtitle: "Architecture Portfolio",
+    description: "another portfolio work done for a archtecture buisnes website to showcase and show their mision and vision",
+    url: "https://www.archideus.in/",
+    github: "Private",
+    skills: ["React", "Next.js", "Design"],
+    year: "2025",
+    category: "Portfolio",
+    type: "Client"
+  },
+  {
+    title: "Sideswitch",
+    subtitle: "Agency website for Indie startups",
+    description: "We are a multi-tasking agency, offering everything from creative design to complex automation. Thanks to our diverse core team from different domains, we provide every service imaginable.",
+    url: "https://sideswitch.boostin.space",
+    github: "Private",
+    skills: ["Next.js", "React", "Design"],
+    year: "2025",
+    category: "Agency",
+    type: "Client"
+  },
+  {
+    title: "More Coming Soon",
+    subtitle: "Future Projects",
+    description: "More exciting projects are in the pipeline and will be added soon.",
+    url: "N/A",
+    github: "N/A",
+    skills: ["..."],
+    year: "2025",
+    category: "Future",
+    type: "Client"
+  },
+
   // --- Personal Projects ---
+  {
+    title: "OneBrand",
+    subtitle: "One stop ecommerce website",
+    description: "A website for your store with complete backend, frontend, database, admin side, and customer side. Full ecommerce solution.",
+    url: "https://onebrandoutfit.netlify.app/",
+    github: "https://github.com/Abhi-boostin/OneBrand",
+    skills: ["React", "Node.js", "MongoDB"],
+    year: "2025",
+    category: "Ecommerce",
+    type: "Personal"
+  },
   {
     title: "EasyHealth",
     subtitle: "Medical document reader",
@@ -55,51 +134,16 @@ const projects: Project[] = [
     category: "Music",
     type: "Personal"
   },
-
-  // --- Client Projects ---
   {
-    title: "Choolha Chowka",
-    subtitle: "Mess management web application",
-    description: "Mess management web application built with React and Django. Streamlines daily operations for mess administrators and users.",
-    url: "https://www.choolhachowka.com/",
-    github: "https://github.com/himanshu-sharmav/Choolha_Chawka",
-    skills: ["React", "Django", "PostgreSQL"],
-    year: "2024",
-    category: "Web App",
-    type: "Client"
-  },
-  {
-    title: "Sideswitch",
-    subtitle: "Agency website for Indie startups",
-    description: "My own Agency website that provide multiple services currently working with Indie startups.",
-    url: "https://sidedswitch2-0.vercel.app/",
-    github: "https://github.com/Abhi-boostin/sidedswitch2.0",
-    skills: ["Next.js", "React", "Design"],
-    year: "2025",
-    category: "Agency",
-    type: "Client"
-  },
-  {
-    title: "OneBrand",
-    subtitle: "One stop ecommerce website",
-    description: "A website for your store with complete backend, frontend, database, admin side, and customer side. Full ecommerce solution.",
-    url: "https://onebrandoutfit.netlify.app/",
-    github: "https://github.com/Abhi-boostin/OneBrand",
-    skills: ["React", "Node.js", "MongoDB"],
-    year: "2025",
-    category: "Ecommerce",
-    type: "Client"
-  },
-  {
-    title: "Light Emotion",
-    subtitle: "Creative lighting showcase",
-    description: "A visually immersive website showcasing creative lighting solutions and emotional design concepts.",
-    url: "https://lightemotion.netlify.app/",
+    title: "More Coming Soon",
+    subtitle: "Future Projects",
+    description: "More exciting projects are in the pipeline and will be added soon.",
+    url: "N/A",
     github: "N/A",
-    skills: ["Web Design", "Frontend", "Creative"],
-    year: "2024",
-    category: "Creative",
-    type: "Client"
+    skills: ["..."],
+    year: "2025",
+    category: "Future",
+    type: "Personal"
   }
 ];
 
@@ -155,14 +199,14 @@ export default function ProjectsSection() {
 
       <div className="container mx-auto px-4 md:px-8 max-w-4xl">
 
-        {/* Personal Projects Section */}
+        {/* Client Projects Section */}
         <div className="mb-32">
           <div className="flex items-center gap-4 mb-12">
             <span className="h-px w-8 bg-white/20"></span>
-            <h2 className="text-sm text-neutral-400 uppercase tracking-[0.2em]">Personal Projects</h2>
+            <h2 className="text-sm text-neutral-400 uppercase tracking-[0.2em]">Client's Work</h2>
           </div>
           <div className="flex flex-col">
-            {personalProjects.map((project) => {
+            {clientProjects.map((project) => {
               const globalIdx = projects.indexOf(project);
               return (
                 <ProjectCard
@@ -179,14 +223,14 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Client Projects Section */}
+        {/* Personal Projects Section */}
         <div>
           <div className="flex items-center gap-4 mb-12">
             <span className="h-px w-8 bg-white/20"></span>
-            <h2 className="text-sm text-neutral-400 uppercase tracking-[0.2em]">Client's Work</h2>
+            <h2 className="text-sm text-neutral-400 uppercase tracking-[0.2em]">Personal Projects</h2>
           </div>
           <div className="flex flex-col">
-            {clientProjects.map((project) => {
+            {personalProjects.map((project) => {
               const globalIdx = projects.indexOf(project);
               return (
                 <ProjectCard

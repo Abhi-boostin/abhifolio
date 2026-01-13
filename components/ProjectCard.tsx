@@ -99,14 +99,24 @@ function ProjectDetails({ project, isOpen }: { project: Project; isOpen: boolean
             </a>
           )}
           {project.github !== "N/A" && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2 rounded-full border border-white/20 bg-transparent text-white text-sm hover:bg-white hover:text-black transition-all duration-300"
-            >
-              GitHub
-            </a>
+            project.github.toLowerCase().includes("private") ? (
+              <button
+                disabled
+                className="px-6 py-2 rounded-full border border-white/10 bg-white/5 text-neutral-400 text-sm cursor-not-allowed flex items-center gap-2"
+              >
+                <span>GitHub</span>
+                <span className="bg-neutral-800 text-neutral-400 text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider">Private</span>
+              </button>
+            ) : (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 rounded-full border border-white/20 bg-transparent text-white text-sm hover:bg-white hover:text-black transition-all duration-300"
+              >
+                GitHub
+              </a>
+            )
           )}
         </div>
       </div>

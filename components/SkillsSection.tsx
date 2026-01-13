@@ -21,6 +21,9 @@ const skills = {
     { name: "Framer Motion", icon: "FM", color: "text-purple-400" },
     { name: "HTML5", icon: "HTML", color: "text-orange-400" },
     { name: "CSS3", icon: "CSS", color: "text-blue-300" },
+    { name: "Jest", icon: "🃏", color: "text-red-500" },
+    { name: "Playwright", icon: "🎭", color: "text-green-500" },
+    { name: "Cypress", icon: "🌲", color: "text-green-400" },
   ],
   backend: [
     { name: "Node.js", icon: "🟢", color: "text-green-400" },
