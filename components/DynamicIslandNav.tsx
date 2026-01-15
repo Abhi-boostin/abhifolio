@@ -25,7 +25,7 @@ const navItems = [
     { title: "Game", icon: <IconDeviceGamepad2 size={20} />, href: "/game", isInternal: true },
     { title: "GitHub", icon: <IconBrandGithub size={20} />, href: "https://github.com/Abhi-boostin" },
     { title: "LinkedIn", icon: <IconBrandLinkedin size={20} />, href: "https://www.linkedin.com/in/abhiboostin/" },
-    { title: "Resume", icon: <IconFileText size={20} />, href: "https://drive.google.com/file/d/1VnoOlRSkGPoGQypLrUekEQiM8BfQCqiJ/view?usp=drive_link" },
+    { title: "Resume", icon: <IconFileText size={20} />, href: "https://drive.google.com/file/d/1bJ5iovzILR_QNM9MuXDY05xY2sZ_-U_c/view?usp=sharing" },
     { title: "Mail", icon: <IconMail size={20} />, href: "#", isInternal: false, isMail: true },
 ];
 
