@@ -35,25 +35,34 @@ export default function HomeSection() {
                         ABHIMANYU<br />SINGH
                     </h1>
 
-                    <div className="hero-text flex items-center gap-4 mb-8">
-                        <span className="text-sm md:text-lg text-neutral-500 tracking-[0.3em] font-light uppercase">
-                            Designer
+                    <div className="hero-text flex flex-wrap items-center gap-3 mb-8">
+                        <span className="text-xs md:text-sm text-neutral-300 tracking-[0.2em] font-light uppercase border border-white/10 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm">
+                            Frontend
                         </span>
-                        <span className="text-neutral-700">X</span>
-                        <span className="text-sm md:text-lg text-neutral-500 tracking-[0.3em] font-light uppercase">
-                            Developer
+                        <span className="text-xs md:text-sm text-neutral-300 tracking-[0.2em] font-light uppercase border border-white/10 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm">
+                            Backend
+                        </span>
+                        <span className="text-xs md:text-sm text-neutral-300 tracking-[0.2em] font-light uppercase border border-white/10 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm">
+                            Infrastructure & QA
                         </span>
                     </div>
 
-                    <p className="hero-text text-neutral-400 max-w-md text-sm md:text-base leading-relaxed"
+                    <p className="hero-text text-neutral-400 max-w-lg text-sm md:text-base leading-relaxed"
                         style={{ fontFamily: '"Quicksand", sans-serif' }}>
-                        I am a <span className="text-white font-medium">Full Stack Engineer</span> specialized in <span className="text-white font-medium">Frontend Engineering</span> and <span className="text-white font-medium">Design</span>.
+                        I am an <span className="text-white font-medium">End-to-End Full Stack Engineer</span> obsessed with shipping high-quality software. From <span className="text-white font-medium">pixel-perfect frontend designs</span> to <span className="text-white font-medium">scalable backend architecture</span>, <span className="text-white font-medium">DevOps infrastructure</span>, and rigorous <span className="text-white font-medium">QA</span>, I handle the entire product lifecycle.
                     </p>
 
-                    <p className="hero-text text-neutral-400 max-w-md text-sm md:text-base leading-relaxed mt-4"
+                    <p className="hero-text text-neutral-400 max-w-lg text-sm md:text-base leading-relaxed mt-4"
                         style={{ fontFamily: '"Quicksand", sans-serif' }}>
-                        I worked solo,worked on a team, lead projects, or just a sideman as well. One dev for all your tasks with equal stats all around. Reach out to me on my mail and we can jump right into your project and ship it.
+                        No silos, no handoffs. Just one engineer orchestrating everything to ensure maximum performance, clean code structure, and a flawless user experience.
                     </p>
+
+                    <div className="hero-text mt-8 pt-6 border-t border-white/10 w-full max-w-lg">
+                        <p className="text-white/90 text-lg md:text-xl font-light tracking-wide italic"
+                            style={{ fontFamily: '"Oswald", sans-serif' }}>
+                            "If you don't wanna burn your VC's money, you need me for sure."
+                        </p>
+                    </div>
                 </div>
 
                 {/* Right Side: 3D Model */}

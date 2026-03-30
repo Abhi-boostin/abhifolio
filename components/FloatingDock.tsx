@@ -84,7 +84,7 @@ const FloatingDockMobile = ({
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
       className={cn(
-        "fixed bottom-3 left-1/2 -translate-x-1/2 z-50 flex md:hidden h-14 items-end gap-2 rounded-2xl bg-black px-2 pb-2 overflow-x-auto whitespace-nowrap scrollbar-hide",
+        "fixed bottom-3 left-1/2 -translate-x-1/2 z-50 flex md:hidden h-14 items-end gap-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 px-3 pb-2 overflow-x-auto whitespace-nowrap scrollbar-hide shadow-[0_8px_32px_0_rgba(0,0,0,0.4)]",
         className,
       )}
     >
@@ -144,7 +144,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-black px-4 pb-3 md:flex",
+        "mx-auto hidden h-16 items-end gap-4 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 px-5 pb-3 md:flex shadow-[0_12px_40px_0_rgba(0,0,0,0.5)]",
         className,
       )}
     >
@@ -244,7 +244,7 @@ function IconContainer({
       style={{ width, height }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative flex aspect-square items-center justify-center rounded-full bg-black"
+      className="relative flex aspect-square items-center justify-center rounded-full bg-white/5 border border-white/5 hover:bg-white/15 transition-colors shadow-inner"
     >
       <AnimatePresence>
         {actuallyHovered && (
@@ -252,7 +252,7 @@ function IconContainer({
             initial={{ opacity: 0, y: 10, x: "-50%" }}
             animate={{ opacity: 1, y: 0, x: "-50%" }}
             exit={{ opacity: 0, y: 2, x: "-50%" }}
-            className="absolute -top-8 left-1/2 w-fit rounded-md border border-gray-200 bg-gray-100 px-2 py-0.5 text-xs whitespace-pre text-neutral-700 dark:border-neutral-900 dark:bg-neutral-800 dark:text-white"
+            className="absolute -top-10 left-1/2 w-fit rounded-lg border border-white/20 bg-black/80 backdrop-blur-md px-3 py-1.5 text-xs font-medium whitespace-pre text-white shadow-xl"
           >
             {title}
           </motion.div>

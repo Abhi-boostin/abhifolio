@@ -19,12 +19,21 @@ interface Experience {
 
 const experiences: Experience[] = [
     {
-        company: "Miracle.AI",
-        role: "Frontend Engineer",
+        company: "BAU AI",
+        role: "Full Stack Engineer",
         period: "Jan 2026 - Present",
-        description: "Currently working on cutting-edge AI solutions. (Details Confidential)",
+        description: "Building the AI Workforce for Construction. Revolutionizing construction workflows through AI automation, involving complex data ingestion pipelines and specialized AI agents for RFP analysis.",
+        url: "https://www.bauai.co/",
+        color: "text-blue-500",
+        tech: ["AI", "Next.js", "Fullstack"]
+    },
+    {
+        company: "Miracle.AI",
+        role: "Front End Supervisor",
+        period: "Dec 2025 - Present",
+        description: "Founding engineer responsible for end-to-end frontend development, with active collaboration on backend systems and data pipelines, led the design of the overall flow architecture with a focus on maximum efficiency and performance. Basically making the accounts team not lack behind.",
         color: "text-purple-400",
-        tech: ["AI", "Next.js"]
+        tech: ["AI", "Next.js", "Frontend Architecture"]
     },
     {
         company: "Mouse & Cheese",

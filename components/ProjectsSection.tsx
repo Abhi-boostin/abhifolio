@@ -12,6 +12,28 @@ gsap.registerPlugin(ScrollTrigger);
 const projects: Project[] = [
   // --- Client Projects ---
   {
+    title: "BAU AI",
+    subtitle: "The AI Workforce for Construction",
+    description: "Revolutionizing construction workflows through AI automation. Deploys specialized AI agents like Clara that read RFPs, extract requirements, and give bid recommendations within minutes.",
+    url: "https://www.bauai.co/",
+    github: "Private",
+    skills: ["AI", "SaaS", "Fullstack"],
+    year: "2026",
+    category: "AI SaaS",
+    type: "Client"
+  },
+  {
+    title: "Nritya",
+    subtitle: "Dance tech platform connecting enthusiasts with studios",
+    description: "India's first dance tech platform connected with top studios. Built end-to-end to simplify discovery, bookings, and studio management. Seamless booking experience and robust backend for studio owners.",
+    url: "https://www.nritya.co.in/",
+    github: "Private",
+    skills: ["React", "Next.js", "Backend"],
+    year: "2024",
+    category: "Platform",
+    type: "Client"
+  },
+  {
     title: "Choolha Chowka",
     subtitle: "Mess management web application",
     description: "Mess management web application built with React and Django. Streamlines daily operations for mess administrators and users. with 10+ modules from purachasing subscription upload feedback ask for leaves to disable daily expenditure and much more.",
