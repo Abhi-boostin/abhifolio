@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { IconBriefcase, IconExternalLink } from "@tabler/icons-react";
+import { IconExternalLink } from "@tabler/icons-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,89 +10,95 @@ interface Experience {
     company: string;
     role: string;
     period: string;
-    description: string;
+    location: string;
+    bullets: string[];
     url?: string;
-    linkedin?: string;
-    tech?: string[];
+    tech: string[];
     color: string;
 }
 
 const experiences: Experience[] = [
     {
         company: "BAU AI",
-        role: "Full Stack Engineer",
+        role: "AI Full-Stack Engineer",
         period: "Jan 2026 - Present",
-        description: "Building the AI Workforce for Construction. Revolutionizing construction workflows through AI automation, involving complex data ingestion pipelines and specialized AI agents for RFP analysis.",
-        url: "https://www.bauai.co/",
-        color: "text-blue-500",
-        tech: ["AI", "Next.js", "Fullstack"]
+        location: "Remote · Germany / US",
+        url: "https://www.bauai.eu",
+        bullets: [
+            "Designing the product frontend architecture using TanStack Query caching and hierarchical query keys.",
+            "Built an end-to-end RAG pipeline with Apache Tika, Gemini embeddings, and pgvector retrieval.",
+            "Setting up GCP infrastructure on Compute Engine and Cloud Run with cost-efficiency tuning.",
+            "Owning Supabase schema and PostgreSQL query optimization for high-volume document tables.",
+            "Maintaining Postgres RPCs and Supabase Edge Functions; patching open endpoints and access-control bugs.",
+            "Implemented dual-side rate limiting (client + server) to harden public endpoints against abuse.",
+            "Owning features end-to-end with Unit / E2E test coverage across the stack.",
+        ],
+        tech: ["Next.js", "TanStack", "Supabase", "GCP", "RAG", "pgvector"],
+        color: "text-blue-400",
     },
     {
-        company: "Miracle.AI",
-        role: "Front End Supervisor",
-        period: "Dec 2025 - Present",
-        description: "Founding engineer responsible for end-to-end frontend development, with active collaboration on backend systems and data pipelines, led the design of the overall flow architecture with a focus on maximum efficiency and performance. Basically making the accounts team not lack behind.",
+        company: "Miracle AI",
+        role: "Founding Engineer",
+        period: "Nov 2025 - Feb 2026",
+        location: "Hybrid · Delhi",
+        url: "https://www.miracleai.in",
+        bullets: [
+            "Owned the product frontend end-to-end, improving modularity and performance with TypeScript.",
+            "Enforced feature-based architecture and dead-code cleanups for long-term maintainability.",
+            "Integrated Flask + Celery + Redis backend for OCR-driven invoice automation into Tally.",
+            "Triaging production logs and runtime metrics; catching regressions before user-facing impact.",
+            "Shipping zero-downtime hotfixes under tight delivery SLAs.",
+        ],
+        tech: ["TypeScript", "Flask", "Celery", "Redis", "Tally"],
         color: "text-purple-400",
-        tech: ["AI", "Next.js", "Frontend Architecture"]
     },
     {
-        company: "Mouse & Cheese",
-        role: "Frontend Engineer & Team Lead",
-        period: "Nov 2025 - Jan 2026",
-        description: "Spearheaded the development of a bespoke SaaS middleware bridging clients with Shopify. Engineered a secure, headless administrative interface that eliminates direct Shopify access, streamlining operations and enhancing security for e-commerce management.",
-        url: "https://lightemotion.netlify.app/",
+        company: "Mouse & Cheese Design Studio",
+        role: "Frontend / Full-Stack Engineer",
+        period: "Sep 2025 - Nov 2025",
+        location: "In-Office · Noida",
+        url: "https://www.mousencheese.design",
+        bullets: [
+            "Designed and shipped 5 high-revenue client websites: Figma to Next.js / React with on-page SEO.",
+            "Translated Figma into accessible, responsive React components with cross-browser parity.",
+            "Built a merchant-agnostic Node.js admin layer over Shopify's REST + GraphQL APIs.",
+            "Single-button store ops (pause store, payments, offline) replacing Shopify's multi-step flows.",
+        ],
+        tech: ["Next.js", "Shopify", "GraphQL", "Node.js"],
         color: "text-yellow-400",
-        tech: ["Shopify API", "SaaS", "Middleware"]
     },
     {
         company: "Choolha Chowka",
-        role: "Project Manager / Frontend Engineer",
-        period: "Jun 2025 - Sep 2025",
-        description: "Architected a comprehensive Mess Management SaaS. Transformed manual mess operations into a fully automated digital ecosystem featuring subscription management, payment gateways, real-time feedback loops, and inventory logs.",
+        role: "Frontend Engineer",
+        period: "Jun 2025 - Aug 2025",
+        location: "Remote",
         url: "https://www.choolhachowka.com/",
+        bullets: [
+            "Shipped a 22-page React + Vite + TypeScript SPA for a multi-role food-subscription platform.",
+            "Built role-aware routing (customer, mess-owner, admin) with React Router.",
+            "Designed reusable Tailwind CSS components for consistent UI across all 22 pages.",
+            "Built the data layer on TanStack Query with typed services and cache invalidation.",
+            "Integrated Razorpay checkout with HMAC-SHA256 signature verification on payment callbacks.",
+        ],
+        tech: ["React", "Vite", "TypeScript", "TanStack", "Razorpay"],
         color: "text-orange-400",
-        tech: ["React", "Django", "SaaS"]
     },
     {
-        company: "Nritya",
-        role: "Fullstack Developer",
-        period: "Oct 2024 - Dec 2024",
-        description: "Built a hyper-local discovery platform for dance enthusiasts. Implemented advanced filtering logic and a seamless booking interface, connecting users with studios through a dynamic, real-time experience.",
-        url: "https://www.nritya.co.in/",
-        linkedin: "https://www.linkedin.com/company/nritya/",
-        color: "text-pink-400",
-        tech: ["Frontend", "Maps", "UX"]
-    },
-    {
-        company: "Sideswitch",
-        role: "Founding Engineer",
-        period: "Aug 2024 - Dec 2024",
-        description: "Co-founded a multi-disciplinary digital agency delivering high-impact Web2/Web3 solutions and automation. Led diverse client projects including ATCCoinfra and DKFFJ, driving digital transformation for startups.",
-        url: "https://sideswitch.in/",
-        linkedin: "https://www.linkedin.com/in/sideswitch/",
-        color: "text-blue-400",
-        tech: ["Agency", "Web3", "Automation"]
-    },
-    {
-        company: "The LogicGen",
-        role: "Frontend Designer",
-        period: "Jan 2024 - Jun 2024",
-        description: "Crafted the company's core web presence and delivered tailored UI/UX solutions for key clients. Specialized in translating complex requirements into intuitive, performant frontend interfaces.",
-        url: "https://thelogicgen.com/",
-        linkedin: "https://www.linkedin.com/company/thelogicgen/",
+        company: "SideSwitch",
+        role: "Full-Stack Engineer · Self-Employed",
+        period: "Aug 2024 - Present",
+        location: "Remote",
+        url: "https://sideswitch.in",
+        bullets: [
+            "Delivering web apps, AI integrations, and automation pipelines across 10+ client engagements.",
+            "Built n8n + custom Node automation pipelines that cut client manual work by ~40%.",
+            "Migrated client legacy stacks to modern frameworks (React, Next.js) for better performance.",
+            "Optimized on-page SEO across the portfolio, lifting organic traffic by ~35%.",
+            "Managed automated ad pipelines as recurring deliverables for ongoing clients.",
+        ],
+        tech: ["Next.js", "n8n", "Node.js", "SEO"],
         color: "text-cyan-400",
-        tech: ["UI/UX", "Frontend"]
     },
-    {
-        company: "SMTPget",
-        role: "General Software Engineer",
-        period: "Aug 2023 - Nov 2023",
-        description: "Evolved from customer support to core development. Designed and built mission-critical SMTP dashboards, enabling clients to monitor email performance, manage senders, and troubleshoot delivery in real-time.",
-        url: "https://smtpget.com/",
-        linkedin: "https://www.linkedin.com/company/smtpget/",
-        color: "text-green-400",
-        tech: ["Dashboard", "Analytics"]
-    }
 ];
 
 export default function ExperienceTimeline() {
@@ -105,7 +111,8 @@ export default function ExperienceTimeline() {
             const items = gsap.utils.toArray(".timeline-item");
 
             items.forEach((item: any) => {
-                gsap.fromTo(item,
+                gsap.fromTo(
+                    item,
                     { opacity: 0, x: -50 },
                     {
                         opacity: 1,
@@ -116,14 +123,15 @@ export default function ExperienceTimeline() {
                             trigger: item,
                             start: "top 85%",
                             end: "bottom 20%",
-                            toggleActions: "play none none reverse"
-                        }
+                            toggleActions: "play none none reverse",
+                        },
                     }
                 );
             });
 
             // Line animation
-            gsap.fromTo(".timeline-line",
+            gsap.fromTo(
+                ".timeline-line",
                 { scaleY: 0 },
                 {
                     scaleY: 1,
@@ -133,8 +141,8 @@ export default function ExperienceTimeline() {
                         trigger: containerRef.current,
                         start: "top center",
                         end: "bottom center",
-                        scrub: 1
-                    }
+                        scrub: 1,
+                    },
                 }
             );
         }, containerRef);
@@ -150,24 +158,34 @@ export default function ExperienceTimeline() {
             <div className="space-y-24">
                 {experiences.map((exp, index) => (
                     <div
-                        key={index}
-                        className={`timeline-item flex flex-col md:flex-row gap-8 md:gap-16 relative ${index % 2 === 0 ? "md:text-right" : "md:flex-row-reverse md:text-left"
-                            }`}
+                        key={exp.company}
+                        className={`timeline-item flex flex-col md:flex-row gap-8 md:gap-16 relative ${
+                            index % 2 === 0 ? "md:text-right" : "md:flex-row-reverse md:text-left"
+                        }`}
                     >
                         {/* Dot on the line */}
                         <div className="absolute left-8 md:left-1/2 w-4 h-4 -ml-2 rounded-full bg-black border-2 border-white/30 z-10 mt-1.5 shadow-[0_0_10px_rgba(255,255,255,0.2)]" />
 
-                        {/* Date (Opposite side) */}
-                        <div className={`pl-16 md:pl-0 flex-1 md:w-1/2 ${index % 2 === 0 ? "md:order-1" : "md:order-2"
-                            }`}>
-                            <span className="font-mono text-sm text-neutral-500 tracking-widest uppercase">
+                        {/* Date + location (Opposite side) */}
+                        <div
+                            className={`pl-16 md:pl-0 flex-1 md:w-1/2 ${
+                                index % 2 === 0 ? "md:order-1" : "md:order-2"
+                            }`}
+                        >
+                            <span className="font-mono text-sm text-neutral-500 tracking-widest uppercase block">
                                 {exp.period}
+                            </span>
+                            <span className="font-mono text-[11px] text-neutral-600 tracking-wider uppercase block mt-1">
+                                {exp.location}
                             </span>
                         </div>
 
                         {/* Content Card */}
-                        <div className={`pl-16 md:pl-0 flex-1 md:w-1/2 ${index % 2 === 0 ? "md:order-2" : "md:order-1"
-                            }`}>
+                        <div
+                            className={`pl-16 md:pl-0 flex-1 md:w-1/2 ${
+                                index % 2 === 0 ? "md:order-2" : "md:order-1"
+                            }`}
+                        >
                             <div className="group relative">
                                 <h3
                                     className="text-3xl md:text-4xl font-light mb-2 text-white group-hover:text-white/90 transition-colors"
@@ -175,21 +193,44 @@ export default function ExperienceTimeline() {
                                 >
                                     {exp.company}
                                 </h3>
-                                <div className={`text-sm font-medium mb-4 uppercase tracking-wider ${exp.color}`}>
+                                <div
+                                    className={`text-sm font-medium mb-5 uppercase tracking-wider ${exp.color}`}
+                                >
                                     {exp.role}
                                 </div>
-                                <p
-                                    className="text-neutral-400 leading-relaxed mb-6 text-sm md:text-base"
+
+                                <ul
+                                    className={`space-y-2 mb-6 text-sm md:text-[15px] text-neutral-400 leading-relaxed ${
+                                        index % 2 === 0 ? "md:list-inside" : ""
+                                    }`}
                                     style={{ fontFamily: '"Quicksand", sans-serif' }}
                                 >
-                                    {exp.description}
-                                </p>
+                                    {exp.bullets.map((b, i) => (
+                                        <li
+                                            key={i}
+                                            className={`flex gap-2 ${
+                                                index % 2 === 0
+                                                    ? "md:flex-row-reverse md:text-right"
+                                                    : ""
+                                            }`}
+                                        >
+                                            <span className="mt-2 w-1 h-1 rounded-full bg-white/40 shrink-0" />
+                                            <span>{b}</span>
+                                        </li>
+                                    ))}
+                                </ul>
 
                                 {/* Tech Stack & Links */}
-                                <div className={`flex flex-wrap gap-3 items-center ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"
-                                    }`}>
-                                    {exp.tech?.map(t => (
-                                        <span key={t} className="px-2 py-1 text-[10px] uppercase tracking-wider border border-white/10 rounded-full text-neutral-500">
+                                <div
+                                    className={`flex flex-wrap gap-2 items-center ${
+                                        index % 2 === 0 ? "md:justify-end" : "md:justify-start"
+                                    }`}
+                                >
+                                    {exp.tech?.map((t) => (
+                                        <span
+                                            key={t}
+                                            className="px-2 py-1 text-[10px] uppercase tracking-wider border border-white/10 rounded-full text-neutral-500"
+                                        >
                                             {t}
                                         </span>
                                     ))}

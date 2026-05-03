@@ -48,6 +48,13 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Hide native cursor on fine-pointer devices (custom Cursor takes over) */
+@media (pointer: fine) {
+    html, body, * {
+        cursor: none !important;
+    }
+}
+
 @keyframes fadeOut {
     to {
         opacity: 0;

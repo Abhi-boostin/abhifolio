@@ -4,6 +4,7 @@ import { useReducer } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import GameQuoteLoader from "./GameQuoteLoader";
+import { Briefcase, CalendarClock, ArrowUpRight } from "lucide-react";
 
 export default function HomeSection() {
     const [accent, click] = useReducer((state) => ++state % 4, 0);
@@ -35,7 +36,7 @@ export default function HomeSection() {
                         ABHIMANYU<br />SINGH
                     </h1>
 
-                    <div className="hero-text flex flex-wrap items-center gap-3 mb-8">
+                    <div className="hero-text flex flex-wrap items-center gap-3 mb-5">
                         <span className="text-xs md:text-sm text-neutral-300 tracking-[0.2em] font-light uppercase border border-white/10 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm">
                             Frontend
                         </span>
@@ -47,14 +48,42 @@ export default function HomeSection() {
                         </span>
                     </div>
 
+                    <div className="hero-text flex flex-wrap items-center gap-2 mb-7">
+                        <a
+                            href="https://www.sideswitch.in/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/20 backdrop-blur-sm transition-colors"
+                        >
+                            <Briefcase size={11} className="text-neutral-400 group-hover:text-white transition-colors" />
+                            <span className="text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-neutral-300 group-hover:text-white transition-colors">
+                                Taking freelance via SideSwitch
+                            </span>
+                            <ArrowUpRight
+                                size={11}
+                                className="text-neutral-500 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                            />
+                        </a>
+                        <a
+                            href="https://cal.com/sideswitch"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/20 backdrop-blur-sm transition-colors"
+                        >
+                            <CalendarClock size={11} className="text-neutral-400 group-hover:text-white transition-colors" />
+                            <span className="text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-neutral-300 group-hover:text-white transition-colors">
+                                Book a call
+                            </span>
+                            <ArrowUpRight
+                                size={11}
+                                className="text-neutral-500 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                            />
+                        </a>
+                    </div>
+
                     <p className="hero-text text-neutral-400 max-w-lg text-sm md:text-base leading-relaxed"
                         style={{ fontFamily: '"Quicksand", sans-serif' }}>
-                        I am an <span className="text-white font-medium">End-to-End Full Stack Engineer</span> obsessed with shipping high-quality software. From <span className="text-white font-medium">pixel-perfect frontend designs</span> to <span className="text-white font-medium">scalable backend architecture</span>, <span className="text-white font-medium">DevOps infrastructure</span>, and rigorous <span className="text-white font-medium">QA</span>, I handle the entire product lifecycle.
-                    </p>
-
-                    <p className="hero-text text-neutral-400 max-w-lg text-sm md:text-base leading-relaxed mt-4"
-                        style={{ fontFamily: '"Quicksand", sans-serif' }}>
-                        No silos, no handoffs. Just one engineer orchestrating everything to ensure maximum performance, clean code structure, and a flawless user experience.
+                        I'm a <span className="text-white font-medium">full-stack engineer</span> who likes to ship things that actually work. I build the <span className="text-white font-medium">frontend</span>, wire up the <span className="text-white font-medium">backend</span>, set up the <span className="text-white font-medium">infra</span>, and write the <span className="text-white font-medium">tests</span>. One engineer, whole stack.
                     </p>
 
                     <div className="hero-text mt-8 pt-6 border-t border-white/10 w-full max-w-lg">

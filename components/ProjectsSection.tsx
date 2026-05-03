@@ -1,11 +1,8 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
-import dynamic from 'next/dynamic';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectCard, { Project } from "./ProjectCard";
-
-const ButterflyFollower = dynamic(() => import('./ButterflyFollower'), { ssr: false });
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -211,13 +208,10 @@ export default function ProjectsSection() {
       id="projects"
       ref={sectionRef}
       className="min-h-screen w-full bg-black text-white py-20 relative overflow-hidden"
-      style={{ cursor: 'url("/icons and gifs/Cosmos.cur"), auto' }}
     >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Quicksand:wght@300..700&family=Saira+Condensed:wght@100..900&display=swap');
       `}</style>
-
-      <ButterflyFollower />
 
       <div className="container mx-auto px-4 md:px-8 max-w-4xl">
 

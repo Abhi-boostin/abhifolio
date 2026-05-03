@@ -3,6 +3,7 @@ import "./globals.css";
 import DynamicIslandNav from "../components/DynamicIslandNav";
 import PageTransitionWrapper from "../components/PageTransitionWrapper";
 import TopLoader from "../components/TopLoader";
+import Cursor from "../components/Cursor";
 
 // Removed next/font/google to prevent Turbopack connection decryption errors
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <TopLoader />
+        <Cursor />
         {/* Dynamic Island Navigation */}
         <DynamicIslandNav />
 

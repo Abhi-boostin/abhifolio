@@ -25,7 +25,7 @@ const navItems = [
     { title: "Game", icon: <IconDeviceGamepad2 size={20} />, href: "/game", isInternal: true },
     { title: "GitHub", icon: <IconBrandGithub size={20} />, href: "https://github.com/Abhi-boostin" },
     { title: "LinkedIn", icon: <IconBrandLinkedin size={20} />, href: "https://www.linkedin.com/in/abhiboostin/" },
-    { title: "Resume", icon: <IconFileText size={20} />, href: "https://drive.google.com/file/d/1LBf392w0NtQqJ1RurzS8q6S_QReDAYJv/view?usp=sharing" },
+    { title: "Resume", icon: <IconFileText size={20} />, href: "https://drive.google.com/file/d/1-73rjbbZnScJcQqozkNzRkSJeR8MoCp9/view?usp=sharing" },
     { title: "Mail", icon: <IconMail size={20} />, href: "#", isInternal: false, isMail: true },
 ];
 
@@ -68,8 +68,9 @@ export default function DynamicIslandNav() {
                         }}
                         transition={{
                             type: "spring",
-                            stiffness: 400,
-                            damping: 30,
+                            stiffness: 260,
+                            damping: 26,
+                            mass: 0.8,
                         }}
                         className={`bg-black/80 backdrop-blur-xl border border-white/10 overflow-hidden shadow-2xl shadow-black/50 relative flex items-center justify-center ${isOpen ? "p-4" : ""
                             }`}
@@ -83,10 +84,10 @@ export default function DynamicIslandNav() {
                                 <motion.button
                                     key="menu-btn"
                                     layout="position"
-                                    initial={{ opacity: 0, scale: 0.5, filter: "blur(5px)" }}
+                                    initial={{ opacity: 0, scale: 0.6, filter: "blur(4px)" }}
                                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                                    exit={{ opacity: 0, scale: 0.5, filter: "blur(5px)" }}
-                                    transition={{ duration: 0.2 }}
+                                    exit={{ opacity: 0, scale: 0.6, filter: "blur(4px)" }}
+                                    transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
                                     onClick={() => setIsOpen(true)}
                                     className="absolute inset-0 flex items-center justify-center w-full h-full text-white hover:text-neutral-300 transition-colors z-10"
                                 >
@@ -96,14 +97,15 @@ export default function DynamicIslandNav() {
                                 <motion.div
                                     key="content"
                                     layout="position"
-                                    initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+                                    initial={{ opacity: 0, scale: 0.92, filter: "blur(8px)" }}
                                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                                    exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+                                    exit={{ opacity: 0, scale: 0.92, filter: "blur(8px)" }}
                                     transition={{
                                         type: "spring",
-                                        stiffness: 400,
-                                        damping: 30,
-                                        opacity: { duration: 0.2 }
+                                        stiffness: 260,
+                                        damping: 26,
+                                        mass: 0.8,
+                                        opacity: { duration: 0.22, ease: [0.32, 0.72, 0, 1] }
                                     }}
                                     className="flex flex-col gap-4 min-w-[300px] sm:min-w-[400px]"
                                 >

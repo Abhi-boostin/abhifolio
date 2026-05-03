@@ -263,7 +263,7 @@ export default function RecruiterPoll() {
 
                             <div className="flex flex-col gap-3">
                                 <a
-                                    href="https://drive.google.com/file/d/1LBf392w0NtQqJ1RurzS8q6S_QReDAYJv/view?usp=sharing"
+                                    href="https://drive.google.com/file/d/1-73rjbbZnScJcQqozkNzRkSJeR8MoCp9/view?usp=sharing"
                                     target="_blank"
                                     className="w-full py-4 bg-white text-black font-bold rounded-xl hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2"
                                 >
